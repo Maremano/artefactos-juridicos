@@ -23,21 +23,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #2c2416;
-            --gold-primary: #C9A962;
-            --gold-light: #E8D5A3;
-            --gold-dark: #8B7355;
-            --terracotta: #A67B5B;
-            --cream: #F5F0E6;
-            --text-white: #FFFFFF;
-            --text-light: #E8E4DC;
-            --text-muted: #B5A899;
+            --bg-white: #FFFFFF;
+            --text-dark: #000000;
+            --text-gray: #333333;
+            --text-light-gray: #666666;
+            --border-gray: #E0E0E0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Outfit', sans-serif;
-            background-color: #2c2416;
-            color: var(--text-white);
+            background-color: var(--bg-white);
+            color: var(--text-dark);
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -49,53 +45,54 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background-color: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border-gray);
         }
         .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
             font-weight: 400;
-            color: var(--cream);
+            color: var(--text-dark);
             text-decoration: none;
             transition: color 0.3s ease;
+            letter-spacing: -0.02em;
         }
         .logo:hover {
-            color: var(--gold-light);
+            color: var(--text-light-gray);
         }
         nav { display: flex; gap: 2.5rem; align-items: center; }
         nav a {
             font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
+            font-weight: 400;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: var(--text-gray);
             text-decoration: none;
             position: relative;
             padding: 0.5rem 0;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.3s ease;
             cursor: pointer;
         }
         nav a::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 50%;
+            bottom: 0; left: 0;
             width: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-            transform: translateX(-50%);
-            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: var(--text-dark);
+            transition: width 0.3s ease;
         }
-        nav a:hover, nav a.active { color: var(--gold-light); }
+        nav a:hover, nav a.active { color: var(--text-dark); }
         nav a:hover::after, nav a.active::after { width: 100%; }
         .nav-cta {
             background: transparent;
-            border: 1px solid var(--gold-primary);
-            color: var(--gold-primary) !important;
+            border: 1px solid var(--text-dark);
+            color: var(--text-dark) !important;
             padding: 0.8rem 1.8rem !important;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.3s ease;
         }
         .nav-cta:hover { 
-            background: var(--gold-primary); 
-            color: var(--bg-dark) !important;
-            box-shadow: 0 0 20px rgba(201, 169, 98, 0.3);
+            background: var(--text-dark); 
+            color: var(--bg-white) !important;
         }
         .nav-cta::after { display: none !important; }
         main {
@@ -106,14 +103,49 @@
             justify-content: flex-start;
             padding: 7rem 2rem 2rem;
         }
+        .content-wrapper {
+            width: 100%;
+            max-width: 1400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        @media (min-width: 1024px) {
+            .content-wrapper {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 4rem;
+            }
+        }
         .artwork-container {
             position: relative;
             width: 100%;
-            max-width: 1400px;
             height: 550px;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        @media (min-width: 1024px) {
+            .artwork-container {
+                width: 50%;
+                max-width: none;
+                height: auto;
+                min-height: 500px;
+                flex-shrink: 0;
+            }
+        }
+        .text-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @media (min-width: 1024px) {
+            .text-content {
+                width: 50%;
+                align-items: flex-start;
+            }
         }
         .artwork-wrapper {
             position: absolute;
@@ -130,111 +162,127 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            mix-blend-mode: lighten;
+            mix-blend-mode: normal;
             max-height: 100%;
         }
         .placeholder-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-style: italic;
-            color: var(--gold-dark);
-            opacity: 0.5;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-style: normal;
+            font-weight: 300;
+            color: var(--text-light-gray);
+            opacity: 0.6;
         }
-        /* Separador decorativo */
+        /* Separador minimalista */
         .artwork-divider {
             width: 100%;
-            max-width: 600px;
-            height: 60px;
+            max-width: 400px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            margin: 1.5rem auto 1rem;
+            margin: 2rem auto;
             opacity: 0;
-            transition: opacity 1s ease 0.5s;
+            transition: opacity 0.6s ease 0.3s;
+        }
+        @media (min-width: 1024px) {
+            .artwork-divider {
+                display: none;
+            }
         }
         .artwork-divider.active { opacity: 1; }
-        .artwork-divider::before,
-        .artwork-divider::after {
+        .artwork-divider::before {
             content: '';
-            flex: 1;
+            width: 100%;
             height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold-dark) 30%, var(--gold-dark) 70%, transparent);
-            opacity: 0.4;
+            background: var(--border-gray);
         }
         .artwork-divider-ornament {
-            padding: 0 2rem;
-            font-size: 1.2rem;
-            color: var(--gold-primary);
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            letter-spacing: 0.3em;
-            animation: ornament-glow 3s ease-in-out infinite;
-        }
-        .artwork-divider-ornament::before {
-            content: '◆';
-        }
-        @keyframes ornament-glow {
-            0%, 100% { 
-                opacity: 0.6;
-                text-shadow: 0 0 10px rgba(201, 169, 98, 0.3);
-            }
-            50% { 
-                opacity: 1;
-                text-shadow: 0 0 20px rgba(201, 169, 98, 0.6),
-                             0 0 30px rgba(201, 169, 98, 0.3);
-            }
+            display: none;
         }
         .description-panel {
             margin-top: 0;
-            max-width: 700px;
-            text-align: center;
+            max-width: 650px;
+            text-align: left;
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s;
         }
-        .description-panel.active { opacity: 1; transform: translateY(0); }
+        .description-panel.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
         .description-panel.hide-panel { display: none; }
+        @media (min-width: 1024px) {
+            .description-panel {
+                width: 100%;
+                max-width: 600px;
+                text-align: left;
+                transform: translateX(30px);
+                padding-top: 0;
+                padding-right: 2rem;
+            }
+            .description-panel.active {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
         .about-photo {
             width: 200px;
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--gold-primary);
-            box-shadow: 0 0 30px rgba(201, 169, 98, 0.2);
+            border: 1px solid var(--border-gray);
+            box-shadow: none;
             mix-blend-mode: normal;
         }
         .description-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
             font-weight: 400;
-            font-style: italic;
-            color: var(--gold-primary);
-            margin-bottom: 1rem;
+            font-style: normal;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
         }
         .description-subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--gold-light);
-            margin-bottom: 0.5rem;
-            font-style: italic;
-            letter-spacing: 0.05em;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-style: normal;
+            letter-spacing: 0;
+            line-height: 1.6;
         }
         .description-lead {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-style: normal;
+            font-weight: 400;
             line-height: 1.8;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
             white-space: pre-line;
-            text-align: justify;
+            text-align: left;
+        }
+        @media (min-width: 1024px) {
+            .description-lead {
+                text-align: left;
+            }
         }
         .description-text {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
+            font-weight: 400;
             line-height: 1.8;
-            color: var(--text-muted);
-            text-align: justify;
+            color: var(--text-gray);
+            text-align: left;
+        }
+        @media (min-width: 1024px) {
+            .description-text {
+                text-align: left;
+            }
         }
         .menu-toggle {
             display: none;
@@ -247,11 +295,11 @@
         .menu-toggle span { 
             width: 25px; 
             height: 2px; 
-            background: var(--gold-primary);
+            background: var(--text-dark);
             transition: all 0.3s ease;
         }
         .menu-toggle:hover span {
-            background: var(--gold-light);
+            background: var(--text-light-gray);
         }
         @media (max-width: 900px) {
             header { padding: 1.5rem 2rem; }
@@ -260,12 +308,13 @@
                 top: 0; right: -100%;
                 width: 80%; max-width: 300px;
                 height: 100vh;
-                background: #2c2416;
+                background: var(--bg-white);
                 flex-direction: column;
                 justify-content: center;
                 gap: 2rem;
                 transition: right 0.4s ease;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+                border-left: 1px solid var(--border-gray);
             }
             nav.active { right: 0; }
             .menu-toggle { display: flex; }
@@ -277,7 +326,7 @@
 </head>
 <body>
     <header>
-        <a href="#" class="logo">Artefactos Jurídicos</a>
+        <a href="javascript:void(0)" class="logo" onclick="showArtwork('home')">Artefactos Jurídicos</a>
         <nav id="nav">
             <a onclick="showArtwork(1)" class="active" data-section="1">Obra 1</a>
             <a onclick="showArtwork(2)" data-section="2">Obra 2</a>
@@ -288,35 +337,43 @@
         <div class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </header>
     <main>
-        <div class="artwork-container">
-            <div class="artwork-wrapper active" data-artwork="1">
-                <img id="obra1-img" class="artwork-image" alt="El Kipu Andino">
+        <div class="content-wrapper">
+            <div class="artwork-container">
+                <div class="artwork-wrapper active" data-artwork="home">
+                    <span class="placeholder-text">Home - Imagen pendiente</span>
+                </div>
+                <div class="artwork-wrapper" data-artwork="1">
+                    <img id="obra1-img" class="artwork-image" alt="El Kipu Andino">
+                </div>
+                <div class="artwork-wrapper" data-artwork="2">
+                    <span class="placeholder-text">Obra 2 - Imagen pendiente</span>
+                </div>
+                <div class="artwork-wrapper" data-artwork="3">
+                    <span class="placeholder-text">Obra 3 - Imagen pendiente</span>
+                </div>
+                <div class="artwork-wrapper" data-artwork="4">
+                    <span class="placeholder-text">Obra 4 - Imagen pendiente</span>
+                </div>
+                <div class="artwork-wrapper" data-artwork="about">
+                    <img id="about-img" class="about-photo" alt="Magdalena Luz María Cáceres Améstica">
+                </div>
             </div>
-            <div class="artwork-wrapper" data-artwork="2">
-                <span class="placeholder-text">Obra 2 - Imagen pendiente</span>
+            <div class="text-content">
+                <div class="artwork-divider active" id="divider">
+                    <div class="artwork-divider-ornament"></div>
+                </div>
+                <div class="description-panel active" id="description">
+                    <h2 class="description-title" id="desc-title">Artefactos Jurídicos</h2>
+                    <p class="description-subtitle" id="desc-subtitle" style="display: none;"></p>
+                    <p class="description-lead" id="desc-lead" style="display: none;"></p>
+                    <p class="description-text" id="desc-text">Bienvenido a la galería de Artefactos Jurídicos. Selecciona una obra del menú para comenzar.</p>
+                </div>
             </div>
-            <div class="artwork-wrapper" data-artwork="3">
-                <span class="placeholder-text">Obra 3 - Imagen pendiente</span>
-            </div>
-            <div class="artwork-wrapper" data-artwork="4">
-                <span class="placeholder-text">Obra 4 - Imagen pendiente</span>
-            </div>
-            <div class="artwork-wrapper" data-artwork="about">
-                <img id="about-img" class="about-photo" alt="Magdalena Luz María Cáceres Améstica">
-            </div>
-        </div>
-        <div class="artwork-divider active" id="divider">
-            <div class="artwork-divider-ornament"></div>
-        </div>
-        <div class="description-panel active" id="description">
-            <h2 class="description-title" id="desc-title">Cabos Sueltos</h2>
-            <p class="description-subtitle" id="desc-subtitle">El kipu andino</p>
-            <p class="description-lead" id="desc-lead">Cuando los datos gobiernan, el poder se organiza: de los quipus del Tahuantinsuyo a la gestión pública moderna, la administración del Estado revela sus límites y sus tensiones con la realidad social.</p>
-            <p class="description-text" id="desc-text">Desde 2011 hasta 2019, la aplicación de términos a las causas ingresadas al Ministerio Público se ha mantenido bastante estable, lo que podría indicar que la institución ha alcanzado un cierto límite de capacidad de procesamiento. Este límite estructural –expresado en un promedio de término de casos de 2.031.500 anuales– refleja las restricciones institucionales para responder a un volumen creciente de ingresos, independientemente del incremento en dotación o de cambios en los marcos normativos. Como por otra parte la estabilidad de las cifras no se condicen con la percepción de la realidad social, informativa y política sobre el gran incremento de la criminalidad en el país.</p>
         </div>
     </main>
     <script>
         const content = {
+            home: { title: "Artefactos Jurídicos", subtitle: "", lead: "", text: "Bienvenido a la galería de Artefactos Jurídicos. Selecciona una obra del menú para comenzar." },
             1: {
                 title: "Cabos Sueltos",
                 subtitle: "El kipu andino",

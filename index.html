@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -425,23 +424,23 @@
             <!-- Carrusel para el Home -->
             <div class="carousel-container" id="carouselContainer" style="display: flex;">
                 <div class="carousel-slide active">
-                    <span class="placeholder-text">Cabos Sueltos - Imagen pendiente</span>
+                    <img src="images/obra1-cabos-sueltos.png" class="carousel-image" alt="Cabos Sueltos">
                     <p class="carousel-title">Cabos Sueltos</p>
                 </div>
                 <div class="carousel-slide">
-                    <span class="placeholder-text">Instancia Dineraria - Imagen pendiente</span>
+                    <img src="images/obra2-instancia-dineraria.png" class="carousel-image" alt="Instancia Dineraria">
                     <p class="carousel-title">Instancia Dineraria</p>
                 </div>
                 <div class="carousel-slide">
-                    <span class="placeholder-text">Frutos Civiles - Imagen pendiente</span>
+                    <img src="images/obra3-frutos-civiles.png" class="carousel-image" alt="Frutos Civiles">
                     <p class="carousel-title">Frutos Civiles</p>
                 </div>
                 <div class="carousel-slide">
-                    <span class="placeholder-text">Goodbye Beling - Imagen pendiente</span>
+                    <img src="images/obra4-goodbye-beling.png" class="carousel-image" alt="Goodbye Beling">
                     <p class="carousel-title">Goodbye Beling</p>
                 </div>
                 <div class="carousel-slide">
-                    <span class="placeholder-text">Biography Jurídica - Imagen pendiente</span>
+                    <img src="images/obra5-biography-juridica.png" class="carousel-image" alt="Biography Jurídica">
                     <p class="carousel-title">Biography Jurídica</p>
                 </div>
                 <div class="carousel-indicators">
@@ -460,22 +459,22 @@
             <!-- Container para obras individuales -->
             <div class="artwork-container" id="artworkContainer" style="display: none;">
                 <div class="artwork-wrapper" data-artwork="1">
-                    <span class="placeholder-text">Obra 1 - Imagen pendiente</span>
+                    <img src="images/obra1-cabos-sueltos.png" class="artwork-image" alt="Cabos Sueltos">
                 </div>
                 <div class="artwork-wrapper" data-artwork="2">
-                    <span class="placeholder-text">Obra 2 - Imagen pendiente</span>
+                    <img src="images/obra2-instancia-dineraria.png" class="artwork-image" alt="Instancia Dineraria">
                 </div>
                 <div class="artwork-wrapper" data-artwork="3">
-                    <span class="placeholder-text">Obra 3 - Imagen pendiente</span>
+                    <img src="images/obra3-frutos-civiles.png" class="artwork-image" alt="Frutos Civiles">
                 </div>
                 <div class="artwork-wrapper" data-artwork="4">
-                    <span class="placeholder-text">Obra 4 - Imagen pendiente</span>
+                    <img src="images/obra4-goodbye-beling.png" class="artwork-image" alt="Goodbye Beling">
                 </div>
                 <div class="artwork-wrapper" data-artwork="5">
-                    <span class="placeholder-text">Obra 5 - Imagen pendiente</span>
+                    <img src="images/obra5-biography-juridica.png" class="artwork-image" alt="Biography Jurídica">
                 </div>
                 <div class="artwork-wrapper" data-artwork="about">
-                    <img id="about-img" class="about-photo" alt="Magdalena Luz María Cáceres Améstica">
+                    <img id="about-img" class="about-photo" src="images/magdalena.png" alt="Magdalena Luz María Cáceres Améstica">
                 </div>
             </div>
             
@@ -619,7 +618,6 @@
         
         // Iniciar carrusel automáticamente
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('about-img').src = 'magdalena.png';
             startCarousel();
         });
     </script>

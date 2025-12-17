@@ -177,8 +177,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             pointer-events: none;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
         }
         .carousel-slide.active {
             opacity: 1;
@@ -186,26 +188,37 @@
         }
         .carousel-image {
             width: 100%;
-            height: 85%;
+            height: calc(100% - 7rem);
             object-fit: contain;
             mix-blend-mode: normal;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        .carousel-image:hover {
+            opacity: 0.85;
         }
         .carousel-title {
             font-family: 'Courier New', Courier, monospace;
             font-size: 1.2rem;
             font-weight: 400;
             color: var(--text-gray);
-            margin-top: 1rem;
+            margin-bottom: 1.5rem;
             text-align: center;
+            position: relative;
+            z-index: 5;
         }
         .carousel-controls {
             position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 50%;
+            width: 100%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
             display: flex;
-            gap: 1rem;
+            justify-content: space-between;
+            padding: 0 1rem;
             z-index: 10;
+            pointer-events: none;
         }
         .carousel-btn {
             background: var(--bg-white);
@@ -216,6 +229,7 @@
             font-family: 'Courier New', Courier, monospace;
             font-size: 1rem;
             transition: all 0.3s ease;
+            pointer-events: auto;
         }
         .carousel-btn:hover {
             background: var(--text-dark);
@@ -223,11 +237,12 @@
         }
         .carousel-indicators {
             position: absolute;
-            bottom: 70px;
+            bottom: 0.5rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             gap: 0.5rem;
+            z-index: 15;
         }
         .indicator {
             width: 10px;
@@ -397,8 +412,15 @@
             .menu-toggle { display: flex; }
             main { padding: 6rem 2rem 3rem; }
             .artwork-container { height: 400px; }
-            .carousel-container { height: 400px; }
+            .carousel-container { height: 450px; }
             .logo { font-size: 1.2rem; }
+            .carousel-controls {
+                padding: 0 0.5rem;
+            }
+            .carousel-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -425,24 +447,24 @@
             <!-- Carrusel para el Home -->
             <div class="carousel-container" id="carouselContainer" style="display: flex;">
                 <div class="carousel-slide active">
-                    <img src="obra1-cabos-sueltos.png" class="carousel-image" alt="Cabos Sueltos">
                     <p class="carousel-title">Cabos Sueltos</p>
+                    <img src="obra1-cabos-sueltos.png" class="carousel-image" alt="Cabos Sueltos" onclick="showArtwork(1)">
                 </div>
                 <div class="carousel-slide">
-                    <img src="obra2-instancia-dineraria.png" class="carousel-image" alt="Instancia Dineraria">
                     <p class="carousel-title">Instancia Dineraria</p>
+                    <img src="obra2-instancia-dineraria.png" class="carousel-image" alt="Instancia Dineraria" onclick="showArtwork(2)">
                 </div>
                 <div class="carousel-slide">
-                    <img src="obra3-frutos-civiles.png" class="carousel-image" alt="Frutos Civiles">
                     <p class="carousel-title">Frutos Civiles</p>
+                    <img src="obra3-frutos-civiles.png" class="carousel-image" alt="Frutos Civiles" onclick="showArtwork(3)">
                 </div>
                 <div class="carousel-slide">
-                    <img src="obra4-goodbye-beling.png" class="carousel-image" alt="Goodbye Beling">
                     <p class="carousel-title">Goodbye Beling</p>
+                    <img src="obra4-goodbye-beling.png" class="carousel-image" alt="Goodbye Beling" onclick="showArtwork(4)">
                 </div>
                 <div class="carousel-slide">
-                    <img src="obra5-biography-juridica.png" class="carousel-image" alt="Biography Jurídica">
                     <p class="carousel-title">Biography Jurídica</p>
+                    <img src="obra5-biography-juridica.png" class="carousel-image" alt="Biography Jurídica" onclick="showArtwork(5)">
                 </div>
                 <div class="carousel-indicators">
                     <span class="indicator active" onclick="goToSlide(0)"></span>

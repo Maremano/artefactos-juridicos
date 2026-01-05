@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Turnos - Caja Los Andes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background-color: #0076A9;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        /* Main Container */
+        .main-container {
+            flex: 1;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 50px 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        h1 {
+            color: #0076A9;
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        /* Buttons */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 18px 35px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #0076A9;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #005c85;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,118,169,0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: #0076A9;
+            border: 2px solid #0076A9;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f0f9fc;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,118,169,0.15);
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            color: #000;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #d0e8f2;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background-color: #e8f4f8;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #0076A9;
+            background-color: white;
+        }
+
+        /* RUT Display */
+        .rut-display {
+            width: 100%;
+            padding: 20px;
+            border: 2px solid #d0e8f2;
+            border-radius: 8px;
+            font-size: 24px;
+            background-color: #e8f4f8;
+            text-align: center;
+            min-height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        #rut-value {
+            min-width: 20px;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+            margin-left: 5px;
+            color: #0076A9;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Numeric Keyboard */
+        .numeric-keyboard {
+            margin: 25px 0;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .keyboard-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            justify-content: center;
+        }
+
+        .key-btn {
+            width: 80px;
+            height: 70px;
+            font-size: 24px;
+            font-weight: 600;
+            border: 2px solid #0076A9;
+            border-radius: 10px;
+            background: white;
+            color: #0076A9;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .key-btn:active {
+            transform: scale(0.95);
+            background-color: #0076A9;
+            color: white;
+        }
+
+        .key-btn:hover {
+            background-color: #e6f4f9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,118,169,0.2);
+        }
+
+        .key-delete {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .key-delete:hover {
+            background-color: #c82333;
+        }
+
+        .key-delete:active {
+            background-color: #bd2130;
+        }
+
+        .key-k {
+            background-color: #FABF00;
+            border-color: #FABF00;
+            color: #333;
+        }
+
+        .key-k:hover {
+            background-color: #e6ad00;
+        }
+
+        .key-k:active {
+            background-color: #cc9a00;
+            color: white;
+        }
+
+        /* Service Options */
+        .service-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 35px;
+            justify-content: center;
+        }
+
+        .service-option {
+            padding: 18px 28px;
+            border: 2px solid #0076A9;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .service-option:hover {
+            background-color: #0076A9;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,118,169,0.3);
+        }
+
+        .service-option.selected {
+            background-color: #0076A9;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,118,169,0.4);
+        }
+
+        /* QR Code Section */
+        .qr-container {
+            margin: 30px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .qr-code {
+            width: 250px;
+            height: 250px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .qr-code img,
+        .qr-code canvas {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto !important;
+            height: auto !important;
+        }
+
+        .qr-instructions {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background-color: #6c757d;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+
+        /* Error Message */
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0076A9;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .card {
+                padding: 35px 25px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 16px 30px;
+                font-size: 16px;
+            }
+
+            .qr-code {
+                width: 200px;
+                height: 200px;
+            }
+
+            .service-option {
+                padding: 14px 20px;
+                font-size: 14px;
+            }
+
+            .key-btn {
+                width: 70px;
+                height: 60px;
+                font-size: 22px;
+            }
+
+            .rut-display {
+                font-size: 20px;
+                padding: 18px;
+            }
+
+            .keyboard-row {
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .key-btn {
+                width: 60px;
+                height: 55px;
+                font-size: 20px;
+            }
+
+            .keyboard-row {
+                gap: 8px;
+            }
+        }
+
+        /* Icon styles */
+        .icon-whatsapp {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .icon-calendar {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <svg width="60" height="42" viewBox="0 0 172 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_46810_5061)">
+                        <path d="M150.439 47.2097H150.356H134.398C128.414 47.2097 122.845 44.7162 119.022 40.8098C115.198 36.9033 91.9259 1.32985 91.9259 1.32985C91.5103 0.748041 90.8454 0.415578 90.0974 0.415578H78.6274C77.7962 0.415578 77.1313 0.831156 76.7157 1.49608C75.2197 3.49086 49.8694 37.5683 46.1292 41.3916C42.3059 45.298 36.7371 47.7915 30.7528 47.7915C21.2776 47.7915 13.631 40.1449 13.631 30.6697C13.631 21.8594 20.1971 14.7115 28.758 13.7141C29.8385 13.5478 30.7528 12.6336 30.7528 11.47V2.24412C30.7528 0.997388 29.7554 0 28.5087 0C12.5505 1.16362 0 14.4621 0 30.6697C0 47.6253 13.7972 61.4225 30.7528 61.4225C40.5604 61.4225 50.0356 57.3498 55.7706 51.033C60.6744 45.7136 77.8794 22.6906 82.9494 15.9582C83.2819 15.5426 83.6975 15.0439 84.2793 15.0439C84.8611 15.0439 85.2767 15.5426 85.6091 16.0413C89.9311 22.7737 104.476 45.1318 109.38 50.4512C115.115 56.6849 124.59 60.7575 134.315 60.8406H149.941C150.107 60.8406 150.273 60.8406 150.439 60.8406C151.686 60.8406 152.683 59.8433 152.683 58.5965V49.5369C152.767 48.2071 151.686 47.2097 150.439 47.2097Z" fill="white"/>
+                        <path d="M169.805 60.8426H160.662C159.415 60.8426 158.418 59.8452 158.418 58.5985V49.4557C158.418 48.209 159.415 47.2116 160.662 47.2116H169.805C171.052 47.2116 172.049 48.209 172.049 49.4557V58.5985C172.049 59.8452 171.052 60.8426 169.805 60.8426Z" fill="#FABF00"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_46810_5061">
+                            <rect width="172" height="121" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+                <span class="logo-text">Caja Los Andes</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Pantalla 1: Bienvenida -->
+        <div id="screen-welcome" class="card">
+            <h1>Bienvenido a Caja Los Andes</h1>
+            <p class="subtitle">Selecciona cómo deseas solicitar tu turno</p>
+            <div class="button-container">
+                <button class="btn btn-primary" onclick="showWhatsAppQR()">
+                    <span class="icon-whatsapp">📱</span>
+                    Pide tu turno por WhatsApp
+                </button>
+                <button class="btn btn-secondary" onclick="showRutScreen()">
+                    <span class="icon-calendar">📅</span>
+                    Pide tu turno aquí
+                </button>
+            </div>
+        </div>
+
+        <!-- Pantalla 2: QR WhatsApp -->
+        <div id="screen-whatsapp" class="card hidden">
+            <h1>Solicita tu turno por WhatsApp</h1>
+            <p class="subtitle">Escanea el código QR con tu celular</p>
+            <div class="qr-container">
+                <div class="qr-code">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=210x210&data=https://wa.me/56921660230?text=Hola%20necesito%20tomar%20un%20turno" 
+                         alt="QR WhatsApp" 
+                         style="width: 210px; height: 210px;"
+                         onerror="this.onerror=null; this.src='https://quickchart.io/qr?text=https://wa.me/56921660230?text=Hola%20necesito%20tomar%20un%20turno&size=210';">
+                </div>
+                <p class="qr-instructions">
+                    Escanea este código con la cámara de tu celular para comunicarte con nosotros por WhatsApp
+                </p>
+            </div>
+            <button class="btn btn-back" onclick="showWelcomeScreen()">Volver</button>
+        </div>
+
+        <!-- Pantalla 3: Ingreso de RUT -->
+        <div id="screen-rut" class="card hidden">
+            <h1>Ingresa tus datos</h1>
+            <p class="subtitle">Para continuar necesitamos tu RUT</p>
+            <div class="form-group">
+                <label for="rut">RUT (sin puntos, con guión)</label>
+                <div class="rut-display" id="rut-display">
+                    <span id="rut-value"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <div class="error-message" id="rut-error">Por favor ingresa un RUT válido (ej: 15.342.038-6)</div>
+            </div>
+            
+            <!-- Teclado Numérico -->
+            <div class="numeric-keyboard">
+                <div class="keyboard-row">
+                    <button type="button" class="key-btn" onclick="addToRut('1')">1</button>
+                    <button type="button" class="key-btn" onclick="addToRut('2')">2</button>
+                    <button type="button" class="key-btn" onclick="addToRut('3')">3</button>
+                </div>
+                <div class="keyboard-row">
+                    <button type="button" class="key-btn" onclick="addToRut('4')">4</button>
+                    <button type="button" class="key-btn" onclick="addToRut('5')">5</button>
+                    <button type="button" class="key-btn" onclick="addToRut('6')">6</button>
+                </div>
+                <div class="keyboard-row">
+                    <button type="button" class="key-btn" onclick="addToRut('7')">7</button>
+                    <button type="button" class="key-btn" onclick="addToRut('8')">8</button>
+                    <button type="button" class="key-btn" onclick="addToRut('9')">9</button>
+                </div>
+                <div class="keyboard-row">
+                    <button type="button" class="key-btn key-k" onclick="addToRut('K')">K</button>
+                    <button type="button" class="key-btn" onclick="addToRut('0')">0</button>
+                    <button type="button" class="key-btn key-delete" onclick="deleteLastRut()">⌫</button>
+                </div>
+            </div>
+            
+            <div class="button-container">
+                <button type="button" class="btn btn-primary" onclick="submitRutDirect()">Continuar</button>
+                <button type="button" class="btn btn-back" onclick="showWelcomeScreen()">Volver</button>
+            </div>
+        </div>
+
+        <!-- Pantalla 4: Selección de Servicio -->
+        <div id="screen-service" class="card hidden">
+            <h1>Selecciona la categoría</h1>
+            <p class="subtitle">Elige el área de servicio que necesitas</p>
+            <div class="service-options" id="service-options">
+                <div class="service-option" onclick="selectService(this, 'Licencias Médicas')">
+                    Licencias Médicas
+                </div>
+                <div class="service-option" onclick="selectService(this, 'Créditos')">
+                    Créditos
+                </div>
+                <div class="service-option" onclick="selectService(this, 'Seguros')">
+                    Seguros
+                </div>
+                <div class="service-option" onclick="selectService(this, 'Ahorro')">
+                    Ahorro
+                </div>
+                <div class="service-option" onclick="selectService(this, 'Turismo')">
+                    Turismo
+                </div>
+                <div class="service-option" onclick="selectService(this, 'Beneficios')">
+                    Beneficios
+                </div>
+                <div class="service-option" onclick="selectService(this, 'Apoyo Social')">
+                    Apoyo Social
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="btn btn-primary" onclick="confirmService()" id="confirm-btn" style="display:none;">
+                    Confirmar Selección
+                </button>
+                <button class="btn btn-back" onclick="showRutScreen()">Volver</button>
+            </div>
+        </div>
+
+        <!-- Pantalla 5: Confirmación -->
+        <div id="screen-confirmation" class="card hidden">
+            <div style="font-size: 60px; margin-bottom: 20px;">✅</div>
+            <h1>¡Turno Solicitado!</h1>
+            <p class="subtitle">Tu turno ha sido registrado exitosamente</p>
+            
+            <!-- Número de Turno -->
+            <div style="background: #0076A9; color: white; padding: 30px; border-radius: 12px; margin: 30px 0;">
+                <p style="font-size: 18px; margin-bottom: 10px; opacity: 0.9;">Tu turno es</p>
+                <p style="font-size: 72px; font-weight: 700; margin: 0; letter-spacing: 8px;" id="turno-number">A1</p>
+            </div>
+            
+            <!-- QR WhatsApp para notificaciones -->
+            <div style="margin: 30px 0;">
+                <p style="color: #333; font-size: 16px; font-weight: 600; margin-bottom: 20px;">
+                    Escanea este QR y te avisaremos por WhatsApp cuando toque tu turno
+                </p>
+                <div class="qr-code" id="whatsapp-qr-container">
+                    <!-- El QR se genera dinámicamente aquí -->
+                </div>
+            </div>
+            
+            <div class="qr-container">
+                <div style="background: #e6f4f9; padding: 25px; border-radius: 8px; margin: 20px 0;">
+                    <p style="color: #0076A9; font-weight: 600; font-size: 18px; margin-bottom: 10px;">Detalles de tu turno</p>
+                    <p style="color: #333; font-size: 16px; line-height: 1.8;">
+                        <strong>RUT:</strong> <span id="confirm-rut"></span><br>
+                        <strong>Servicio:</strong> <span id="confirm-service"></span><br>
+                        <strong>Fecha:</strong> <span id="confirm-date"></span>
+                    </p>
+                </div>
+                <p class="qr-instructions">
+                    Mantente atento a las notificaciones de WhatsApp.
+                </p>
+            </div>
+            <button class="btn btn-primary" onclick="resetForm()">Solicitar Nuevo Turno</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Caja Los Andes. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let selectedService = null;
+        let userRut = null;
+        let rutValue = '';
+
+        // Función para generar QR code simple usando Data URL
+        function generateSimpleQR(text, size) {
+            // Usar una API que sabemos que funciona con cors
+            return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(text)}`;
+        }
+
+        // Agregar dígito o letra al RUT
+        function addToRut(char) {
+            // Obtener solo los dígitos sin formato
+            let cleanRut = rutValue.replace(/\./g, '').replace(/-/g, '');
+            
+            // Máximo 9 caracteres sin formato (8 dígitos + 1 dígito verificador o K)
+            if (cleanRut.length >= 9) return;
+            
+            // Agregar el carácter al RUT limpio
+            cleanRut += char;
+            rutValue = cleanRut;
+            
+            formatRutAutomatically();
+        }
+
+        // Borrar último carácter
+        function deleteLastRut() {
+            if (rutValue.length > 0) {
+                // Obtener solo los dígitos sin formato
+                let cleanRut = rutValue.replace(/\./g, '').replace(/-/g, '');
+                
+                // Eliminar el último carácter
+                cleanRut = cleanRut.slice(0, -1);
+                rutValue = cleanRut;
+                
+                // Re-formatear si quedan caracteres
+                if (cleanRut.length > 0) {
+                    formatRutAutomatically();
+                } else {
+                    updateRutDisplay();
+                }
+            }
+        }
+
+        // Actualizar display del RUT
+        function updateRutDisplay() {
+            document.getElementById('rut-value').textContent = rutValue || '';
+        }
+
+        // Formatear RUT automáticamente (agregar puntos y guión)
+        function formatRutAutomatically() {
+            // Remover puntos y guiones existentes
+            let cleanRut = rutValue.replace(/\./g, '').replace(/-/g, '');
+            
+            // Si tiene más de 1 dígito, formatear
+            if (cleanRut.length > 1) {
+                // Separar cuerpo y dígito verificador
+                let body = cleanRut.slice(0, -1);
+                let dv = cleanRut.slice(-1);
+                
+                // Formatear el cuerpo con puntos
+                let formattedBody = '';
+                let count = 0;
+                
+                for (let i = body.length - 1; i >= 0; i--) {
+                    if (count > 0 && count % 3 === 0) {
+                        formattedBody = '.' + formattedBody;
+                    }
+                    formattedBody = body[i] + formattedBody;
+                    count++;
+                }
+                
+                // Agregar guión y dígito verificador
+                rutValue = formattedBody + '-' + dv;
+            }
+            // Si solo tiene 1 carácter, dejar sin formato
+            
+            updateRutDisplay();
+        }
+
+        function showWelcomeScreen() {
+            hideAllScreens();
+            document.getElementById('screen-welcome').classList.remove('hidden');
+            resetRutInput();
+        }
+
+        function showWhatsAppQR() {
+            hideAllScreens();
+            document.getElementById('screen-whatsapp').classList.remove('hidden');
+        }
+
+        function showRutScreen() {
+            hideAllScreens();
+            document.getElementById('screen-rut').classList.remove('hidden');
+            resetRutInput();
+        }
+
+        function showServiceScreen() {
+            hideAllScreens();
+            document.getElementById('screen-service').classList.remove('hidden');
+        }
+
+        function showConfirmationScreen() {
+            hideAllScreens();
+            document.getElementById('screen-confirmation').classList.remove('hidden');
+        }
+
+        function hideAllScreens() {
+            const screens = ['screen-welcome', 'screen-whatsapp', 'screen-rut', 'screen-service', 'screen-confirmation'];
+            screens.forEach(screen => {
+                document.getElementById(screen).classList.add('hidden');
+            });
+        }
+
+        function resetRutInput() {
+            rutValue = '';
+            updateRutDisplay();
+            document.getElementById('rut-error').style.display = 'none';
+        }
+
+        function validateRut(rut) {
+            // Validación simple: verificar que tenga al menos números, guión y dígito verificador
+            // Ejemplos válidos: 1.234.567-8, 12.345.678-9, 1234567-8, etc.
+            
+            // Remover puntos para verificar
+            let cleanRut = rut.replace(/\./g, '');
+            
+            // Debe tener formato: números-dígito/K
+            const rutPattern = /^\d+-[\dkK]$/;
+            
+            // Verificar patrón y longitud mínima (al menos 3 caracteres: X-Y)
+            return rutPattern.test(cleanRut) && cleanRut.length >= 3;
+        }
+
+        function submitRutDirect() {
+            const errorMsg = document.getElementById('rut-error');
+            
+            console.log('=== DEBUG SUBMIT RUT ===');
+            console.log('RUT ingresado (rutValue):', rutValue);
+            console.log('Longitud:', rutValue.length);
+            
+            // Limpiar para ver contenido real
+            let cleanForDebug = rutValue.replace(/\./g, '').replace(/-/g, '');
+            console.log('RUT sin formato:', cleanForDebug);
+            console.log('Longitud sin formato:', cleanForDebug.length);
+            
+            const isValid = validateRut(rutValue);
+            console.log('¿Es válido?:', isValid);
+
+            if (isValid) {
+                console.log('✓ RUT VÁLIDO - Avanzando a siguiente pantalla');
+                userRut = rutValue;
+                errorMsg.style.display = 'none';
+                showServiceScreen();
+            } else {
+                console.log('✗ RUT INVÁLIDO - Mostrando error');
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        function submitRut(event) {
+            event.preventDefault();
+            submitRutDirect();
+        }
+
+        function selectService(element, service) {
+            // Remover selección anterior
+            const options = document.querySelectorAll('.service-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Seleccionar nuevo servicio
+            element.classList.add('selected');
+            selectedService = service;
+            
+            // Mostrar botón de confirmar
+            document.getElementById('confirm-btn').style.display = 'block';
+        }
+
+        function confirmService() {
+            if (!selectedService) {
+                alert('Por favor selecciona un servicio');
+                return;
+            }
+
+            // Generar número de turno según la categoría
+            const turnoPrefixes = {
+                'Licencias Médicas': 'A',
+                'Créditos': 'B',
+                'Seguros': 'C',
+                'Ahorro': 'D',
+                'Turismo': 'E',
+                'Beneficios': 'F',
+                'Apoyo Social': 'G'
+            };
+            
+            const prefix = turnoPrefixes[selectedService] || 'A';
+            const randomNumber = Math.floor(Math.random() * 99) + 1;
+            const turnoNumber = prefix + randomNumber;
+
+            // Crear mensaje de WhatsApp con el número de turno
+            const whatsappMessage = `Hola tengo el turno ${turnoNumber} y quiero que me avisen cuando llegue mi turno`;
+            const whatsappUrl = `https://wa.me/56921660230?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            console.log('Turno:', turnoNumber);
+            console.log('WhatsApp URL:', whatsappUrl);
+            
+            // Generar QR con fallback automático
+            const qrContainer = document.getElementById('whatsapp-qr-container');
+            if (qrContainer) {
+                const qrUrl1 = `https://api.qrserver.com/v1/create-qr-code/?size=210x210&data=${encodeURIComponent(whatsappUrl)}`;
+                const qrUrl2 = `https://quickchart.io/qr?text=${encodeURIComponent(whatsappUrl)}&size=210`;
+                
+                qrContainer.innerHTML = `<img src="${qrUrl1}" 
+                    alt="QR WhatsApp" 
+                    style="width: 210px; height: 210px;"
+                    onerror="this.onerror=null; this.src='${qrUrl2}';">`;
+                console.log('QR de confirmación insertado');
+            } else {
+                console.error('No se encontró el contenedor del QR');
+            }
+
+            // Mostrar confirmación
+            document.getElementById('turno-number').textContent = turnoNumber;
+            document.getElementById('confirm-rut').textContent = userRut;
+            document.getElementById('confirm-service').textContent = selectedService;
+            
+            // Fecha y hora actual
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('es-CL', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            document.getElementById('confirm-date').textContent = dateStr;
+            
+            showConfirmationScreen();
+        }
+
+        function resetForm() {
+            selectedService = null;
+            userRut = null;
+            rutValue = '';
+            updateRutDisplay();
+            document.getElementById('confirm-btn').style.display = 'none';
+            
+            const options = document.querySelectorAll('.service-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            showWelcomeScreen();
+        }
+    </script>
+</body>
+</html>

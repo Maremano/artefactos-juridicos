@@ -478,6 +478,14 @@
         <div id="screen-whatsapp" class="card hidden">
             <h1>Solicita tu turno por WhatsApp</h1>
             <p class="subtitle">Escanea el código QR con tu celular</p>
+            
+            <!-- Contador regresivo -->
+            <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+                <p style="color: #666; font-size: 14px; margin: 0;">
+                    ⏱️ Volviendo al inicio en <strong><span id="countdown-whatsapp">60</span> segundos</strong>
+                </p>
+            </div>
+            
             <div class="qr-container">
                 <div class="qr-code" style="width: 200px; height: 200px; margin: 15px auto;">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://wa.me/56921660230?text=Hola%20necesito%20tomar%20un%20turno" 
@@ -576,43 +584,62 @@
             <h1>¡Turno Solicitado!</h1>
             <p class="subtitle">Tu turno ha sido registrado exitosamente</p>
             
-            <!-- Número de Turno -->
-            <div style="background: #0076A9; color: white; padding: 20px; border-radius: 12px; margin: 20px 0;">
-                <p style="font-size: 16px; margin-bottom: 8px; opacity: 0.9;">Tu turno es</p>
-                <p style="font-size: 56px; font-weight: 700; margin: 0; letter-spacing: 8px;" id="turno-number">A1</p>
-            </div>
-            
-            <!-- Instrucción para guardar turno -->
-            <div style="background: #FFF3CD; border-left: 4px solid #FABF00; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                <p style="color: #856404; font-size: 16px; font-weight: 600; margin: 0;">
-                    📸 Sácale una foto a tu turno o escanea el QR para que te lo mandemos por WhatsApp
+            <!-- Contador regresivo -->
+            <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+                <p style="color: #666; font-size: 14px; margin: 0;">
+                    ⏱️ Volviendo al inicio en <strong><span id="countdown-confirmation">60</span> segundos</strong>
                 </p>
             </div>
             
-            <!-- QR WhatsApp para notificaciones -->
-            <div style="margin: 20px 0;">
-                <p style="color: #333; font-size: 15px; font-weight: 600; margin-bottom: 15px;">
-                    Escanea este QR y te avisaremos por WhatsApp cuando toque tu turno
-                </p>
-                <div class="qr-code" id="whatsapp-qr-container" style="width: 200px; height: 200px; margin: 15px auto;">
-                    <!-- El QR se genera dinámicamente aquí -->
+            <!-- Layout de dos columnas -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;">
+                
+                <!-- Columna izquierda: Número de turno e instrucciones -->
+                <div>
+                    <!-- Número de Turno -->
+                    <div style="background: #0076A9; color: white; padding: 25px; border-radius: 12px; margin-bottom: 20px;">
+                        <p style="font-size: 16px; margin-bottom: 8px; opacity: 0.9;">Tu turno es</p>
+                        <p style="font-size: 64px; font-weight: 700; margin: 0; letter-spacing: 8px;" id="turno-number">A1</p>
+                    </div>
+                    
+                    <!-- Instrucción para guardar turno -->
+                    <div style="background: #FFF3CD; border-left: 4px solid #FABF00; padding: 18px; border-radius: 8px; margin-bottom: 20px;">
+                        <p style="color: #856404; font-size: 16px; font-weight: 600; margin: 0;">
+                            📸 Sácale una foto a tu turno o escanea el QR para que te lo mandemos por WhatsApp
+                        </p>
+                    </div>
+                    
+                    <!-- Detalles del turno -->
+                    <div style="background: #e6f4f9; padding: 18px; border-radius: 8px;">
+                        <p style="color: #0076A9; font-weight: 600; font-size: 16px; margin-bottom: 10px;">Detalles de tu turno</p>
+                        <p style="color: #333; font-size: 14px; line-height: 1.6; margin: 0;">
+                            <strong>RUT:</strong> <span id="confirm-rut"></span><br>
+                            <strong>Servicio:</strong> <span id="confirm-service"></span><br>
+                            <strong>Fecha:</strong> <span id="confirm-date"></span>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="qr-container">
-                <div style="background: #e6f4f9; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                    <p style="color: #0076A9; font-weight: 600; font-size: 16px; margin-bottom: 8px;">Detalles de tu turno</p>
-                    <p style="color: #333; font-size: 14px; line-height: 1.6;">
-                        <strong>RUT:</strong> <span id="confirm-rut"></span><br>
-                        <strong>Servicio:</strong> <span id="confirm-service"></span><br>
-                        <strong>Fecha:</strong> <span id="confirm-date"></span>
-                    </p>
+                
+                <!-- Columna derecha: QR y botón -->
+                <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <!-- QR WhatsApp para notificaciones -->
+                    <div>
+                        <p style="color: #333; font-size: 15px; font-weight: 600; margin-bottom: 15px; text-align: center;">
+                            Escanea este QR y te avisaremos por WhatsApp cuando toque tu turno
+                        </p>
+                        <div class="qr-code" id="whatsapp-qr-container" style="width: 240px; height: 240px; margin: 0 auto;">
+                            <!-- El QR se genera dinámicamente aquí -->
+                        </div>
+                        <p style="font-size: 14px; margin-top: 15px; text-align: center; color: #666;">
+                            Mantente atento a las notificaciones de WhatsApp
+                        </p>
+                    </div>
+                    
+                    <!-- Botón nuevo turno -->
+                    <button class="btn btn-primary" onclick="resetForm()" style="margin-top: 20px;">Solicitar Nuevo Turno</button>
                 </div>
-                <p class="qr-instructions" style="font-size: 14px; margin-top: 10px;">
-                    Mantente atento a las notificaciones de WhatsApp.
-                </p>
+                
             </div>
-            <button class="btn btn-primary" onclick="resetForm()">Solicitar Nuevo Turno</button>
         </div>
     </div>
 
@@ -625,6 +652,46 @@
         let selectedService = null;
         let userRut = null;
         let rutValue = '';
+        let countdownInterval = null;
+
+        // Función para iniciar contador regresivo
+        function startCountdown(elementId, seconds, callback) {
+            // Limpiar cualquier contador anterior
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+            }
+            
+            let timeLeft = seconds;
+            const countdownElement = document.getElementById(elementId);
+            
+            // Actualizar inmediatamente
+            if (countdownElement) {
+                countdownElement.textContent = timeLeft;
+            }
+            
+            // Iniciar intervalo
+            countdownInterval = setInterval(() => {
+                timeLeft--;
+                
+                if (countdownElement) {
+                    countdownElement.textContent = timeLeft;
+                }
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    countdownInterval = null;
+                    if (callback) callback();
+                }
+            }, 1000);
+        }
+
+        // Función para detener contador
+        function stopCountdown() {
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+            }
+        }
 
         // Función para generar QR code simple usando Data URL
         function generateSimpleQR(text, size) {
@@ -703,6 +770,7 @@
         }
 
         function showWelcomeScreen() {
+            stopCountdown();
             hideAllScreens();
             document.getElementById('screen-welcome').classList.remove('hidden');
             resetRutInput();
@@ -711,6 +779,11 @@
         function showWhatsAppQR() {
             hideAllScreens();
             document.getElementById('screen-whatsapp').classList.remove('hidden');
+            
+            // Iniciar contador de 60 segundos que vuelve al inicio
+            startCountdown('countdown-whatsapp', 60, function() {
+                showWelcomeScreen();
+            });
         }
 
         function showRutScreen() {
@@ -727,6 +800,11 @@
         function showConfirmationScreen() {
             hideAllScreens();
             document.getElementById('screen-confirmation').classList.remove('hidden');
+            
+            // Iniciar contador de 60 segundos que vuelve al inicio
+            startCountdown('countdown-confirmation', 60, function() {
+                resetForm();
+            });
         }
 
         function hideAllScreens() {
@@ -831,12 +909,12 @@
             // Generar QR con fallback automático
             const qrContainer = document.getElementById('whatsapp-qr-container');
             if (qrContainer) {
-                const qrUrl1 = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(whatsappUrl)}`;
-                const qrUrl2 = `https://quickchart.io/qr?text=${encodeURIComponent(whatsappUrl)}&size=180`;
+                const qrUrl1 = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(whatsappUrl)}`;
+                const qrUrl2 = `https://quickchart.io/qr?text=${encodeURIComponent(whatsappUrl)}&size=220`;
                 
                 qrContainer.innerHTML = `<img src="${qrUrl1}" 
                     alt="QR WhatsApp" 
-                    style="width: 180px; height: 180px;"
+                    style="width: 220px; height: 220px;"
                     onerror="this.onerror=null; this.src='${qrUrl2}';">`;
                 console.log('QR de confirmación insertado');
             } else {
@@ -864,6 +942,7 @@
         }
 
         function resetForm() {
+            stopCountdown();
             selectedService = null;
             userRut = null;
             rutValue = '';

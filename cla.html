@@ -580,39 +580,39 @@
 
         <!-- Pantalla 5: Confirmación -->
         <div id="screen-confirmation" class="card hidden">
-            <div style="font-size: 50px; margin-bottom: 15px;">✅</div>
-            <h1>¡Turno Solicitado!</h1>
-            <p class="subtitle">Tu turno ha sido registrado exitosamente</p>
+            <div style="font-size: 40px; margin-bottom: 10px;">✅</div>
+            <h1 style="margin-bottom: 8px;">¡Turno Solicitado!</h1>
+            <p class="subtitle" style="margin-bottom: 12px;">Tu turno ha sido registrado exitosamente</p>
             
             <!-- Contador regresivo -->
-            <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; margin-bottom: 15px;">
-                <p style="color: #666; font-size: 14px; margin: 0;">
+            <div style="background: #f8f9fa; padding: 8px; border-radius: 8px; margin-bottom: 12px;">
+                <p style="color: #666; font-size: 13px; margin: 0;">
                     ⏱️ Volviendo al inicio en <strong><span id="countdown-confirmation">60</span> segundos</strong>
                 </p>
             </div>
             
             <!-- Layout de dos columnas -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 15px;">
                 
                 <!-- Columna izquierda: Número de turno e instrucciones -->
                 <div>
                     <!-- Número de Turno -->
-                    <div style="background: #0076A9; color: white; padding: 25px; border-radius: 12px; margin-bottom: 20px;">
-                        <p style="font-size: 16px; margin-bottom: 8px; opacity: 0.9;">Tu turno es</p>
-                        <p style="font-size: 64px; font-weight: 700; margin: 0; letter-spacing: 8px;" id="turno-number">A1</p>
+                    <div style="background: #0076A9; color: white; padding: 20px; border-radius: 12px; margin-bottom: 15px;">
+                        <p style="font-size: 14px; margin-bottom: 6px; opacity: 0.9;">Tu turno es</p>
+                        <p style="font-size: 56px; font-weight: 700; margin: 0; letter-spacing: 6px;" id="turno-number">A1</p>
                     </div>
                     
                     <!-- Instrucción para guardar turno -->
-                    <div style="background: #FFF3CD; border-left: 4px solid #FABF00; padding: 18px; border-radius: 8px; margin-bottom: 20px;">
-                        <p style="color: #856404; font-size: 16px; font-weight: 600; margin: 0;">
+                    <div style="background: #FFF3CD; border-left: 4px solid #FABF00; padding: 14px; border-radius: 8px; margin-bottom: 15px;">
+                        <p style="color: #856404; font-size: 14px; font-weight: 600; margin: 0;">
                             📸 Sácale una foto a tu turno o escanea el QR para que te lo mandemos por WhatsApp
                         </p>
                     </div>
                     
                     <!-- Detalles del turno -->
-                    <div style="background: #e6f4f9; padding: 18px; border-radius: 8px;">
-                        <p style="color: #0076A9; font-weight: 600; font-size: 16px; margin-bottom: 10px;">Detalles de tu turno</p>
-                        <p style="color: #333; font-size: 14px; line-height: 1.6; margin: 0;">
+                    <div style="background: #e6f4f9; padding: 14px; border-radius: 8px;">
+                        <p style="color: #0076A9; font-weight: 600; font-size: 15px; margin-bottom: 8px;">Detalles de tu turno</p>
+                        <p style="color: #333; font-size: 13px; line-height: 1.5; margin: 0;">
                             <strong>RUT:</strong> <span id="confirm-rut"></span><br>
                             <strong>Servicio:</strong> <span id="confirm-service"></span><br>
                             <strong>Fecha:</strong> <span id="confirm-date"></span>
@@ -624,19 +624,19 @@
                 <div style="display: flex; flex-direction: column; justify-content: space-between;">
                     <!-- QR WhatsApp para notificaciones -->
                     <div>
-                        <p style="color: #333; font-size: 15px; font-weight: 600; margin-bottom: 15px; text-align: center;">
+                        <p style="color: #333; font-size: 14px; font-weight: 600; margin-bottom: 12px; text-align: center;">
                             Escanea este QR y te avisaremos por WhatsApp cuando toque tu turno
                         </p>
-                        <div class="qr-code" id="whatsapp-qr-container" style="width: 240px; height: 240px; margin: 0 auto;">
+                        <div class="qr-code" id="whatsapp-qr-container" style="width: 220px; height: 220px; margin: 0 auto; padding: 8px;">
                             <!-- El QR se genera dinámicamente aquí -->
                         </div>
-                        <p style="font-size: 14px; margin-top: 15px; text-align: center; color: #666;">
+                        <p style="font-size: 13px; margin-top: 12px; text-align: center; color: #666;">
                             Mantente atento a las notificaciones de WhatsApp
                         </p>
                     </div>
                     
                     <!-- Botón nuevo turno -->
-                    <button class="btn btn-primary" onclick="resetForm()" style="margin-top: 20px;">Solicitar Nuevo Turno</button>
+                    <button class="btn btn-primary" onclick="resetForm()" style="margin-top: 15px;">Solicitar Nuevo Turno</button>
                 </div>
                 
             </div>
@@ -909,12 +909,12 @@
             // Generar QR con fallback automático
             const qrContainer = document.getElementById('whatsapp-qr-container');
             if (qrContainer) {
-                const qrUrl1 = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(whatsappUrl)}`;
-                const qrUrl2 = `https://quickchart.io/qr?text=${encodeURIComponent(whatsappUrl)}&size=220`;
+                const qrUrl1 = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(whatsappUrl)}`;
+                const qrUrl2 = `https://quickchart.io/qr?text=${encodeURIComponent(whatsappUrl)}&size=200`;
                 
                 qrContainer.innerHTML = `<img src="${qrUrl1}" 
                     alt="QR WhatsApp" 
-                    style="width: 220px; height: 220px;"
+                    style="width: 200px; height: 200px;"
                     onerror="this.onerror=null; this.src='${qrUrl2}';">`;
                 console.log('QR de confirmación insertado');
             } else {

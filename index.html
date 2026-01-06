@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -157,153 +158,14 @@
             gap: 0.5rem;
         }
         
-        /* Estilos del Carrusel */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            height: 550px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .carousel-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-        }
-        .carousel-slide.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .carousel-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            mix-blend-mode: normal;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-            max-height: 100%;
-        }
-        .carousel-image:hover {
-            opacity: 0.85;
-        }
-        .carousel-title {
-            display: none;
-        }
-        .carousel-controls {
-            position: absolute;
-            bottom: 0.5rem;
-            width: 100%;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            z-index: 10;
-            pointer-events: none;
-        }
-        .carousel-btn {
-            background: var(--bg-white);
-            border: 1px solid var(--border-gray);
-            color: var(--text-dark);
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            pointer-events: auto;
-        }
-        .carousel-btn:hover {
-            background: var(--text-dark);
-            color: var(--bg-white);
-        }
-        .carousel-indicators {
-            display: flex;
-            gap: 0.5rem;
-            z-index: 15;
-        }
-        .indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--border-gray);
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .indicator.active {
-            background: var(--text-dark);
-        }
-        
-        .artwork-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            height: 550px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        /* Estilos del contenedor de texto */
         .text-content {
             width: 100%;
             max-width: 800px;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-        .artwork-wrapper {
-            position: absolute;
-            width: 100%; height: 100%;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .artwork-wrapper.active { opacity: 1; pointer-events: auto; }
-        .artwork-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            mix-blend-mode: normal;
-            max-height: 100%;
-        }
-        .placeholder-text {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.5rem;
-            font-style: normal;
-            font-weight: 400;
-            color: var(--text-light-gray);
-            opacity: 0.6;
-        }
-        .artwork-divider {
-            width: 100%;
-            max-width: 400px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            margin: 2rem auto;
-            opacity: 0;
-            transition: opacity 0.6s ease 0.3s;
-        }
-        .artwork-divider.active { opacity: 1; }
-        .artwork-divider::before {
-            content: '';
-            width: 100%;
-            height: 1px;
-            background: var(--border-gray);
+            margin-top: 3rem;
         }
         .description-panel {
             margin-top: 0;
@@ -316,14 +178,6 @@
         .description-panel.active { 
             opacity: 1; 
             transform: translateY(0); 
-        }
-        .description-panel.hide-panel { display: none; }
-        .about-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            mix-blend-mode: normal;
-            max-height: 100%;
         }
         .description-title {
             font-family: 'Courier New', Courier, monospace;
@@ -384,6 +238,131 @@
             color: var(--text-gray);
             text-align: center;
         }
+        .obras-menu {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-gray);
+            display: none;
+        }
+        .obras-menu.show {
+            display: block;
+        }
+        .obras-menu-title {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .obras-select {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            background: var(--bg-white);
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--border-gray);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23000' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 3rem;
+        }
+        .obras-select:hover {
+            border-color: var(--text-dark);
+        }
+        .obras-select:focus {
+            outline: none;
+            border-color: var(--text-dark);
+        }
+        .obras-menu-individual {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-gray);
+            display: none;
+        }
+        .obras-menu-individual.show {
+            display: block;
+        }
+        .obras-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .obra-link {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--text-gray);
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--border-gray);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            letter-spacing: 0.02em;
+        }
+        .obra-link:hover {
+            background: var(--text-dark);
+            color: var(--bg-white);
+            border-color: var(--text-dark);
+        }
+        .cv-download {
+            margin-top: 2.5rem;
+            display: none;
+            justify-content: center;
+        }
+        .cv-download.show {
+            display: flex;
+        }
+        .cv-button {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--bg-white);
+            background: var(--text-dark);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border: 1px solid var(--text-dark);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        .cv-button:hover {
+            background: var(--bg-white);
+            color: var(--text-dark);
+        }
+        .about-image {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            display: none;
+            justify-content: center;
+        }
+        .about-image.show {
+            display: flex;
+        }
+        .about-image img {
+            max-width: 100%;
+            width: 400px;
+            height: auto;
+            object-fit: contain;
+        }
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -419,15 +398,17 @@
             nav.active { right: 0; }
             .menu-toggle { display: flex; }
             main { padding: 6rem 2rem 3rem; }
-            .artwork-container { height: 400px; }
-            .carousel-container { height: 450px; }
             .logo { font-size: 1.2rem; }
-            .carousel-controls {
-                gap: 1rem;
+            .obras-grid {
+                grid-template-columns: 1fr;
             }
-            .carousel-btn {
-                padding: 0.4rem 0.8rem;
+            .obra-link {
                 font-size: 0.9rem;
+                padding: 0.7rem 1rem;
+            }
+            .about-image img {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
@@ -439,11 +420,13 @@
             <div class="dropdown" id="obras-dropdown">
                 <a class="dropdown-toggle" onclick="toggleDropdown()">Obras</a>
                 <div class="dropdown-menu">
-                    <a onclick="showArtwork(1); closeDropdown();" data-section="1">Cabos Sueltos</a>
-                    <a onclick="showArtwork(2); closeDropdown();" data-section="2">Instancia Dineraria</a>
+                    <a onclick="showArtwork(1); closeDropdown();" data-section="1">Cabos Sueltos/Nudos Ciegos</a>
+                    <a onclick="showArtwork(2); closeDropdown();" data-section="2">Instancia Monetaria</a>
                     <a onclick="showArtwork(3); closeDropdown();" data-section="3">Frutos Civiles</a>
                     <a onclick="showArtwork(4); closeDropdown();" data-section="4">Goodbye Beling</a>
                     <a onclick="showArtwork(5); closeDropdown();" data-section="5">Plan Regulador</a>
+                    <a onclick="showArtwork(6); closeDropdown();" data-section="6">Red Ponsabilidad</a>
+                    <a onclick="showArtwork(7); closeDropdown();" data-section="7">Entramados Internacionales</a>
                 </div>
             </div>
             <a onclick="showArtwork('exposiciones');" data-section="exposiciones">Exposiciones</a>
@@ -453,78 +436,49 @@
     </header>
     <main>
         <div class="content-wrapper">
-            <!-- Carrusel para el Home -->
-            <div class="carousel-container" id="carouselContainer" style="display: flex;">
-                <div class="carousel-slide active">
-                    <p class="carousel-title">Cabos Sueltos</p>
-                    <img src="obra1-cabos-sueltos.png" class="carousel-image" alt="Cabos Sueltos" onclick="showArtwork(1)">
-                </div>
-                <div class="carousel-slide">
-                    <p class="carousel-title">Instancia Dineraria</p>
-                    <img src="obra2-instancia-dineraria.png" class="carousel-image" alt="Instancia Dineraria" onclick="showArtwork(2)">
-                </div>
-                <div class="carousel-slide">
-                    <p class="carousel-title">Frutos Civiles</p>
-                    <img src="obra3-frutos-civiles.png" class="carousel-image" alt="Frutos Civiles" onclick="showArtwork(3)">
-                </div>
-                <div class="carousel-slide">
-                    <p class="carousel-title">Goodbye Beling</p>
-                    <img src="obra4-goodbye-beling.png" class="carousel-image" alt="Goodbye Beling" onclick="showArtwork(4)">
-                </div>
-                <div class="carousel-slide">
-                    <p class="carousel-title">Plan Regulador</p>
-                    <img src="obra5-plan-regulador.png" class="carousel-image" alt="Plan Regulador" onclick="showArtwork(5)">
-                </div>
-                <div class="carousel-controls">
-                    <button class="carousel-btn" onclick="prevSlide()">←</button>
-                    <div class="carousel-indicators">
-                        <span class="indicator active" onclick="goToSlide(0)"></span>
-                        <span class="indicator" onclick="goToSlide(1)"></span>
-                        <span class="indicator" onclick="goToSlide(2)"></span>
-                        <span class="indicator" onclick="goToSlide(3)"></span>
-                        <span class="indicator" onclick="goToSlide(4)"></span>
-                    </div>
-                    <button class="carousel-btn" onclick="nextSlide()">→</button>
-                </div>
-            </div>
-            
-            <!-- Container para obras individuales -->
-            <div class="artwork-container" id="artworkContainer" style="display: none;">
-                <div class="artwork-wrapper" data-artwork="1">
-                    <img src="obra1-cabos-sueltos.png" class="artwork-image" alt="Cabos Sueltos">
-                </div>
-                <div class="artwork-wrapper" data-artwork="2">
-                    <img src="obra2-instancia-dineraria.png" class="artwork-image" alt="Instancia Dineraria">
-                </div>
-                <div class="artwork-wrapper" data-artwork="3">
-                    <img src="obra3-frutos-civiles.png" class="artwork-image" alt="Frutos Civiles">
-                </div>
-                <div class="artwork-wrapper" data-artwork="4">
-                    <img src="obra4-goodbye-beling.png" class="artwork-image" alt="Goodbye Beling">
-                </div>
-                <div class="artwork-wrapper" data-artwork="5">
-                    <img src="obra5-plan-regulador.png" class="artwork-image" alt="Plan Regulador">
-                </div>
-                <div class="artwork-wrapper" data-artwork="exposiciones">
-                    <img src="exposiciones.png" class="artwork-image" alt="Exposiciones">
-                </div>
-                <div class="artwork-wrapper" data-artwork="about">
-                    <img id="about-img" class="about-photo" src="magdalena.png" alt="Magdalena Luz María Cáceres Améstica">
-                </div>
-            </div>
+
             
             <div class="text-content">
-                <div class="artwork-divider active" id="divider">
-                    <div class="artwork-divider-ornament"></div>
-                </div>
                 <div class="description-panel active" id="description">
                     <h2 class="description-title" id="desc-title">Artefactos Jurídicos</h2>
+                    <div class="about-image" id="about-image">
+                        <img src="artefactos-juridicos/magdalena.png" alt="Magdalena Luz María Cáceres Améstica">
+                    </div>
                     <p class="description-subtitle" id="desc-subtitle" style="display: none;"></p>
                     <p class="description-lead" id="desc-lead" style="display: none;"></p>
-                    <p class="description-text" id="desc-text">Bienvenido a la galería de Artefactos Jurídicos. Selecciona una obra del menú para comenzar.</p>
+                    <p class="description-text" id="desc-text">Artefactos Jurídicos es un proyecto interdisciplinario que tiene por propósito relevar situaciones jurídicas por medio de obras plásticas que tienen por técnica y materialidad el arte textil como soporte. Es así cómo por medio del ejercicio plástico del textil se articula una novedosa forma de reflexionar y exponer, ya sea situaciones que se producen en el espacio del derecho como de las tensiones que se suscitan en las mismas. De este modo, en un ejercicio de co-creación en conjunto con académicos de la Facultad de Derecho de la Universidad de Chile se confeccionarán estas obras textiles.</p>
                     <div class="description-artwork" id="desc-artwork" style="display: none;">
                         <h3 class="description-artwork-title">Descripción de la Obra</h3>
                         <p class="description-artwork-text" id="desc-artwork-text"></p>
+                    </div>
+                    <div class="obras-menu show" id="obras-menu">
+                        <h3 class="obras-menu-title">Ver Obras</h3>
+                        <select class="obras-select" onchange="if(this.value) showArtwork(parseInt(this.value))">
+                            <option value="">Seleccione una obra...</option>
+                            <option value="1">Cabos Sueltos/Nudos Ciegos</option>
+                            <option value="2">Instancia Monetaria</option>
+                            <option value="3">Frutos Civiles</option>
+                            <option value="4">Goodbye Beling</option>
+                            <option value="5">Plan Regulador</option>
+                            <option value="6">Red Ponsabilidad</option>
+                            <option value="7">Entramados Internacionales</option>
+                        </select>
+                    </div>
+                    <div class="cv-download" id="cv-download">
+                        <a href="artefactos-juridicos/cv_magdalena_caceres_amestica.pdf" class="cv-button" download>Descargar CV</a>
+                    </div>
+                    <div class="obras-menu-individual" id="obras-menu-individual">
+                        <h3 class="obras-menu-title">Ver Obras</h3>
+                        <select class="obras-select" onchange="if(this.value) showArtwork(parseInt(this.value))">
+                            <option value="">Seleccione una obra...</option>
+                            <option value="1">Cabos Sueltos/Nudos Ciegos</option>
+                            <option value="2">Instancia Monetaria</option>
+                            <option value="3">Frutos Civiles</option>
+                            <option value="4">Goodbye Beling</option>
+                            <option value="5">Plan Regulador</option>
+                            <option value="6">Red Ponsabilidad</option>
+                            <option value="7">Entramados Internacionales</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -532,99 +486,107 @@
     </main>
     <script>
         const content = {
-            home: { title: "Artefactos Jurídicos", subtitle: "", lead: "", text: "Bienvenido a la galería de Artefactos Jurídicos. Selecciona una obra del menú para comenzar." },
-            1: {
-                title: "Cabos Sueltos",
-                subtitle: "",
-                lead: "A 25 años de la reforma al sistema procesal penal, se invita a reflexionar respecto de cuál es la percepción social de esta forma de aplicación de justicia penal. Y con ello se vuelve a la discusión de si es preferible un sistema diseñado y ordenado en cifras y criterios de rendimiento, a uno en que prime el criterio de justicia con el  fin ulterior de PAZ SOCIAL.",
-                text: "Cabos Sueltos es una obra textil que tiene por objeto visibilizar estadísticamente el límite del rendimiento institucional del MP en el ejercicio de la persecución penal. Descripción de la obra: Un Kipu que a través de sus nudos representan cifras que expresan las estadísticas del ejercicio de persecución penal por parte del MP y que ponen de manifiesto las inconsistencias de un sistema que tenía dentro de sus fines el rendimiento y que en base a sus propias estadísticas solo se evidencia limitación institucional para poder aplicar justicia en miras a la PAZ SOCIAL.",
-                artworkDescription: "La obra consta de la confección de un Kipu en gama de rojos, el cual por medio de distintas cuerdas representa diferentes ítems: ⁃ Cuerda madre ⁃ Cuerdas colgantes primarias (años) ⁃	Cuerdas colgantes secundarias (términos judiciales y términos no judiciales) ⁃ Cuerdas colgantes terciarias ( términos SCP o AR).Y que a través de sus nudos demuestre cuantitativamente el ejercicio del ius puniendi persecutorio del MP y el límite del rendimiento y la institucionalidad de este."
+            home: { 
+                title: "Artefactos Jurídicos", 
+                subtitle: "", 
+                lead: "", 
+                text: "Artefactos Jurídicos es un proyecto interdisciplinario que tiene por propósito relevar situaciones jurídicas por medio de obras plásticas que tienen por técnica y materialidad el arte textil como soporte. Es así cómo por medio del ejercicio plástico del textil se articula una novedosa forma de reflexionar y exponer, ya sea situaciones que se producen en el espacio del derecho como de las tensiones que se suscitan en las mismas. De este modo, en un ejercicio de co-creación en conjunto con académicos de la Facultad de Derecho de la Universidad de Chile se confeccionarán estas obras textiles." 
             },
-            2: { title: "Instancia Dineraria", subtitle: "", lead: "La instancia monetaria es la unidad de valor de la moneda de un país.", text: "INSTANCIA MONETARIA es una obra que invita a reflexionar como el dinero en la contemporaneidad se sostiene en una abstracción nunca antes vista que se sostiene en un doble entramado: jurídico/institucional y tecnológico.", artworkDescription: "Textil en técnica de ligamento de tela confeccionado con cables de bronce y cobre que son los materiales de los hilos conductores de los cables de las redes de internet para la transferencia de datos. En este caso, transferencia de cifras de valor respecto de instancias monetarias. Se adhieren distintos tipos de trenzados que representan infraestructura tecnológica dada por hilos cableados que se sostienen en 3 tipos. ⁃ Par trenzado (hilos torcidos dados por diferentes pares) ⁃ Coaxial (trenzado de 8 o 10 circular) ⁃ Fibra óptica" },
-            3: { title: "Frutos Civiles", subtitle: "", lead: "Los frutos civiles son una metáfora jurídica para referirse a la utilidad pecuniaria que genera un bien periódicamente. Sea en virtud de una relación jurídica que se genera respecto de este por medio de un contrato o por la ley.", text: "FRUTOS CIVILES es una obra que representa la contradicción que supone este concepto como algo orgánico propio de la naturaleza de un artefacto cultural e institucional como lo es el derecho y sus herramientas como la ley y los contratos.", artworkDescription: "Es un árbol en una maceta revestida de escritos de contratos que genera frutas elaboradas con monedas y flores elaboradas con billetes." },
-            4: { title: "Goodbye Beling", subtitle: "", lead: "Decirle Adiós al bueno, viejo y liberal derecho penal no es fácil para los penalistas que han honrado la figura y el aporte del gran teórico de la dogmática penal: Beling. GOODBY BELING es una obra en su homenaje que tiene por propósito reflejar el cambio sustantivo que se ha producido en el S. XXI del constructo teórico del tipo penal.", text: "es en homenaje a él que se desarrolla esta serie de piezas textiles que lo que hacen es traducir en imágenes la teoría y del dogmática penal de Beling. Y el cambio sustantivo que se ha producido en el siglo XXI del constructo del tipo penal.", artworkDescription: "Serie de piezas textiles o cuadros textiles que representan figurativamente lo que es el tipo penal, pero se van deshilachando ( trama y urdimbre) más allá del marco, superan el marco jurídico dado, sin perjuicio de ser considerado un tipo. Como  por otra parte están con espacios vacíos, en blanco, leyes penales en blanco." },
-            5: { title: "Plan Regulador", subtitle: "", lead: "El ordenamiento no sólo no sólo enmarca la conducta de las personas, sino también configura y proyecta por medio de reglas la composición del espacio urbano.", text: "PLAN REGULADOR es una obra textil que tiene por propósito visualizar plásticamente como el derecho intenta armonizar el ejercicio de la propiedad en el territorio urbano por parte de quienes participan en este. Y a su vez las tensiones que se generan entre la concurrencia del interés privado en el ejercicio de la propiedad y el interés público de bienestar hacia la comunidad.", artworkDescription: "La obra consta de un textil construido por medio de la técnica de ligamento de tela, al cual se le adhieren figuras y dibujos, por medio de otras técnicas textiles, que representan visualmente la normativa aplicada al espacio urbano metropolitano." },
-            exposiciones: { title: "Exposiciones", subtitle: "", lead: "", text: "Información sobre exposiciones próximas y pasadas." },
-            about: { title: "", subtitle: "Magdalena Luz María Cáceres Améstica", lead: "Magdalena es abogada, licenciada en Ciencias Jurídicas y Arte de la Universidad de Chile, más post título en Gestión Cultural de la Pontificia Universidad Católica con una trayectoria en la disciplina artística y patrimonial vinculada al arte textil.", text: "Su obra representa problemáticas jurídicas por medio de artefactos textiles. El arte textil es el lenguaje a través del cual se articulan diferentes situaciones e instituciones y sus tensiones que se producen en el campo del derecho." }
+            1: {
+                title: "Cabos Sueltos/Nudos Ciegos",
+                subtitle: "",
+                lead: "",
+                text: "CABOS SUELTOS/NUDOS CIEGOS.- es una obra textil inspirada en el objeto ancestral del quipu, que tiene por objeto visibilizar estadísticamente el límite del rendimiento institucional del Ministerio Público en el ejercicio de la persecución penal. Los nudos del quipu representan cifras que expresan estadísticamente el ejercicio de la persecución penal por parte del Ministerio Público, y que ponen de manifiesto un sistema que en base al foco de rendimiento evidencia una saturación y grave limitación institucional en la aplicación de justicia con un costo asociado a la PAZ SOCIAL.",
+                artworkDescription: ""
+            },
+            2: { 
+                title: "Instancia Monetaria", 
+                subtitle: "", 
+                lead: "", 
+                text: "INSTANCIA MONETARIA.- Es una obra que invita a reflexionar cómo el dinero y su valor en la contemporaneidad se sostienen en una abstracción nunca antes vista, a través en un entramado jurídico/institucional como a su vez de tipo tecnológico/virtual.", 
+                artworkDescription: "" 
+            },
+            3: { 
+                title: "Frutos Civiles", 
+                subtitle: "", 
+                lead: "", 
+                text: "FRUTOS CIVILES.- Es una obra que representa la contradicción que supone este concepto como algo orgánico, propio de la naturaleza de un artefacto cultural e institucional como lo es el derecho y sus instrumentos, tales como la ley y los contratos.", 
+                artworkDescription: "" 
+            },
+            4: { 
+                title: "Goodbye Beling", 
+                subtitle: "", 
+                lead: "", 
+                text: "GOODBYE BELING.- Es una obra en homenaje al Teórico del derecho Penal: Ernst von Beling, que tiene por propósito reflejar la transformación sustancial que se ha producido en el s. XXI del constructo teórico del DELITO-TIPO. La figura delictiva o figura de delito muta desde una figura o esquema, que aunque se compone de distintos elementos opera en una unidad finamente delineada, a un esquema texturizado, con porosidades que revelan el cambio de paradigma en la concepción liberal de lo que es el Derecho Penal.", 
+                artworkDescription: "" 
+            },
+            5: { 
+                title: "Plan Regulador", 
+                subtitle: "", 
+                lead: "", 
+                text: "PLAN REGULADOR.- Es una obra que tiene por propósito visualizar plásticamente como el derecho intenta armonizar el ejercicio de la propiedad en el territorio urbano por parte de quienes participan en éste. Y a su vez las tensiones que se generan en la concurrencia del interés privado y el interés público en el ejercicio del derecho de propiedad.", 
+                artworkDescription: "" 
+            },
+            6: { 
+                title: "Red Ponsabilidad", 
+                subtitle: "", 
+                lead: "", 
+                text: "RED PONSABILIDAD.- Es una obra que tiene por objeto visualizar hacer aparecer la red o soporte jurídico invisible de la que es parte el denominado sujeto de derecho. Estar sujeto o sujeta a esta red, emerge a través de la ruptura que se produce en esta y la generación de responsabilidad por parte del infractor.", 
+                artworkDescription: "" 
+            },
+            7: { 
+                title: "Entramados Internacionales", 
+                subtitle: "", 
+                lead: "", 
+                text: "ENTRAMADOS INTERNACIONALES.- Es una obra por medio de la cual se releva como se integran los instrumentos internacionales pactados por el ordenamiento nacional, y como la inserción de estos a la legislación nacional de manera directa, sin mayores adecuaciones jurídicas, producen tensiones y marañas normativas que afectan la aplicación del derecho interno produciendo tensión social en la comunidad.", 
+                artworkDescription: "" 
+            },
+            exposiciones: { title: "Exposiciones", subtitle: "", lead: "", text: "Información próximamente." },
+            about: { 
+                title: "About Me", 
+                subtitle: "", 
+                lead: "", 
+                text: "Magdalena es abogada, licenciada en Ciencias Jurídicas y Arte de la Universidad de Chile, más post título en Gestión Cultural de la Pontificia Universidad Católica con una trayectoria en la disciplina artística y patrimonial vinculada al arte textil." 
+            }
         };
         
-        // Variables del carrusel
-        let currentSlide = 0;
-        const totalSlides = 5;
-        let carouselInterval;
-        
-        // Funciones del carrusel
-        function showSlide(n) {
-            const slides = document.querySelectorAll('.carousel-slide');
-            const indicators = document.querySelectorAll('.indicator');
-            
-            if (n >= totalSlides) { currentSlide = 0; }
-            if (n < 0) { currentSlide = totalSlides - 1; }
-            
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(ind => ind.classList.remove('active'));
-            
-            slides[currentSlide].classList.add('active');
-            indicators[currentSlide].classList.add('active');
-        }
-        
-        function nextSlide() {
-            currentSlide++;
-            showSlide(currentSlide);
-            resetCarouselTimer();
-        }
-        
-        function prevSlide() {
-            currentSlide--;
-            showSlide(currentSlide);
-            resetCarouselTimer();
-        }
-        
-        function goToSlide(n) {
-            currentSlide = n;
-            showSlide(currentSlide);
-            resetCarouselTimer();
-        }
-        
-        function startCarousel() {
-            carouselInterval = setInterval(() => {
-                currentSlide++;
-                showSlide(currentSlide);
-            }, 5000); // Cambia cada 5 segundos
-        }
-        
-        function stopCarousel() {
-            clearInterval(carouselInterval);
-        }
-        
-        function resetCarouselTimer() {
-            stopCarousel();
-            startCarousel();
-        }
-        
+
         function showArtwork(section) {
-            const carouselContainer = document.getElementById('carouselContainer');
-            const artworkContainer = document.getElementById('artworkContainer');
-            
             document.querySelectorAll('nav a').forEach(link => {
                 link.classList.remove('active');
                 if (link.dataset.section == section) link.classList.add('active');
             });
             
+            // Manejar la visibilidad del menú de obras, botón de CV, imagen y menú individual
+            const obrasMenu = document.getElementById('obras-menu');
+            const obrasMenuIndividual = document.getElementById('obras-menu-individual');
+            const cvDownload = document.getElementById('cv-download');
+            const aboutImage = document.getElementById('about-image');
+            
             if (section === 'home') {
-                // Mostrar carrusel
-                carouselContainer.style.display = 'flex';
-                artworkContainer.style.display = 'none';
-                startCarousel();
+                // En HOME: mostrar menú de obras del home, ocultar todo lo demás
+                obrasMenu.classList.add('show');
+                obrasMenuIndividual.classList.remove('show');
+                cvDownload.classList.remove('show');
+                aboutImage.classList.remove('show');
+            } else if (section === 'about') {
+                // En ABOUT ME: mostrar botón de CV e imagen, ocultar menús de obras
+                obrasMenu.classList.remove('show');
+                obrasMenuIndividual.classList.remove('show');
+                cvDownload.classList.add('show');
+                aboutImage.classList.add('show');
+            } else if (typeof section === 'number' || ['1','2','3','4','5','6','7'].includes(String(section))) {
+                // En OBRAS INDIVIDUALES: mostrar menú individual, ocultar el resto
+                obrasMenu.classList.remove('show');
+                obrasMenuIndividual.classList.add('show');
+                cvDownload.classList.remove('show');
+                aboutImage.classList.remove('show');
             } else {
-                // Mostrar obra individual
-                carouselContainer.style.display = 'none';
-                artworkContainer.style.display = 'flex';
-                stopCarousel();
-                
-                document.querySelectorAll('.artwork-wrapper').forEach(a => a.classList.remove('active'));
-                const sel = document.querySelector('[data-artwork="'+section+'"]');
-                if (sel) sel.classList.add('active');
+                // En EXPOSICIONES u otras: ocultar todo
+                obrasMenu.classList.remove('show');
+                obrasMenuIndividual.classList.remove('show');
+                cvDownload.classList.remove('show');
+                aboutImage.classList.remove('show');
             }
             
             const dp = document.getElementById('description');
@@ -669,11 +631,7 @@
         function closeDropdown() { 
             document.getElementById('obras-dropdown').classList.remove('active'); 
         }
-        
-        // Iniciar carrusel automáticamente
-        document.addEventListener('DOMContentLoaded', function() {
-            startCarousel();
-        });
+
     </script>
 </body>
 </html>

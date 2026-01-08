@@ -147,8 +147,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 7rem 0 0.5rem;
+            padding: 0;
         }
+        
+        main.with-top-padding {
+            padding-top: 7rem;
+        }
+        
         .content-wrapper {
             width: 100%;
             display: flex;
@@ -160,8 +165,9 @@
         /* Contenedor del GIF del Home */
         .home-gif-container {
             width: 100%;
-            margin: 0 0 3rem 0;
+            margin: 0;
             display: none;
+            padding-top: 6rem; /* Espacio para el header fixed */
         }
         .home-gif-container.show {
             display: block;
@@ -182,6 +188,14 @@
             align-items: center;
             margin-top: 0;
             padding: 0 2rem;
+        }
+        
+        .text-content.with-top-padding {
+            padding-top: 7rem;
+        }
+        
+        .text-content.with-small-padding {
+            padding-top: 3rem;
         }
         .description-panel {
             margin-top: 0;
@@ -216,6 +230,7 @@
             line-height: 1.8;
             color: var(--text-gray);
             text-align: justify;
+            margin-top: 3rem;
         }
         
         .description-image-container {
@@ -228,6 +243,7 @@
         
         .description-image-container img {
             max-width: 100%;
+            max-height: calc(100vh - 200px);
             height: auto;
             object-fit: contain;
         }
@@ -470,7 +486,15 @@
             }
             nav.active { right: 0; }
             .menu-toggle { display: flex; }
-            main { padding: 6rem 0 3rem; }
+            main.with-top-padding {
+                padding-top: 6rem;
+            }
+            .text-content.with-top-padding {
+                padding-top: 6rem;
+            }
+            .text-content.with-small-padding {
+                padding-top: 3rem;
+            }
             .logo { font-size: 1.2rem; }
             .obras-grid {
                 grid-template-columns: 1fr;
@@ -495,11 +519,10 @@
                 <div class="dropdown-menu">
                     <a onclick="showArtwork(1); closeDropdown();" data-section="1">Cabos Sueltos/Nudos Ciegos</a>
                     <a onclick="showArtwork(2); closeDropdown();" data-section="2">Instancia Monetaria</a>
-                    <a onclick="showArtwork(3); closeDropdown();" data-section="3">Frutos Civiles</a>
-                    <a onclick="showArtwork(4); closeDropdown();" data-section="4">Goodbye Beling</a>
-                    <a onclick="showArtwork(5); closeDropdown();" data-section="5">Plan Regulador</a>
-                    <a onclick="showArtwork(6); closeDropdown();" data-section="6">Red Ponsabilidad</a>
-                    <a onclick="showArtwork(7); closeDropdown();" data-section="7">Entramados Internacionales</a>
+                    <a onclick="showArtwork(3); closeDropdown();" data-section="3">Goodbye Beling</a>
+                    <a onclick="showArtwork(4); closeDropdown();" data-section="4">Plan Regulador</a>
+                    <a onclick="showArtwork(5); closeDropdown();" data-section="5">Red Ponsabilidad</a>
+                    <a onclick="showArtwork(6); closeDropdown();" data-section="6">Entramados Internacionales</a>
                 </div>
             </div>
             <a onclick="showArtwork('exposiciones');" data-section="exposiciones">Exposiciones</a>
@@ -514,7 +537,7 @@
                 <img src="https://maremano.github.io/artefactos-juridicos/videohome.gif" alt="Artefactos Jurídicos">
             </div>
             
-            <div class="text-content">
+            <div class="text-content with-small-padding">
                 <div class="description-panel active" id="description">
                     <div class="description-content">
                         <div class="about-image" id="about-image">
@@ -553,7 +576,7 @@
                 title: "Cabos Sueltos/Nudos Ciegos",
                 subtitle: "",
                 lead: "",
-                text: "es una obra textil inspirada en el objeto ancestral del quipu, que tiene por objeto visibilizar estadísticamente el límite del rendimiento institucional del Ministerio Público en el ejercicio de la persecución penal. Los nudos del quipu representan cifras que expresan estadísticamente el ejercicio de la persecución penal por parte del Ministerio Público, y que ponen de manifiesto un sistema que en base al foco de rendimiento evidencia una saturación y grave limitación institucional en la aplicación de justicia con un costo asociado a la PAZ SOCIAL.",
+                text: "es una obra textil inspirada en el objeto ancestral del quipu, que tiene por objeto visibilizar estadísticamente el límite del rendimiento institucional del Ministerio Público en el ejercicio de la persecución penal. Los nudos del quipu representan cifras que expresan estadísticamente el ejercicio de la persecución penal por parte del Ministerio Público, y que ponen de manifiesto un sistema que -en base al foco de rendimiento- evidencia una saturación y grave limitación institucional en la aplicación de justicia con un costo asociado a la PAZ SOCIAL.",
                 artworkDescription: "",
                 image: "https://maremano.github.io/artefactos-juridicos/cabosuelto.png"
             },
@@ -561,44 +584,37 @@
                 title: "Instancia Monetaria", 
                 subtitle: "", 
                 lead: "", 
-                text: "Es una obra que invita a reflexionar cómo el dinero y su valor en la contemporaneidad se sostienen en una abstracción nunca antes vista, a través en un entramado jurídico/institucional como a su vez de tipo tecnológico/virtual.", 
+                text: "Es una obra cuyo soporte en técnica de faz de urdimbre invita a reflexionar cómo el dinero y su valor en la contemporaneidad se sostienen en una abstracción sin precedentes, a través del entramado jurídico/institucional que se adhiere al tecnológico/virtual. La técnica de faz de urdimbre en hilos de cobre y bronce - referencia directa a la materialidad de los hilos conductores de cables para el ciberespacio- expresan metafóricamente como se sujeta el valor del dinero en términos jurídicos e institucionales como tecnológicos y virtuales, por medio de una estructura que se esconde y que sólo aparece por medio de la visualización del signo dinerario.", 
                 artworkDescription: "",
                 image: "https://maremano.github.io/artefactos-juridicos/instanciamonetaria.png"
             },
             3: { 
-                title: "Frutos Civiles", 
-                subtitle: "", 
-                lead: "", 
-                text: "Es una obra que representa la contradicción que supone este concepto como algo orgánico, propio de la naturaleza de un artefacto cultural e institucional como lo es el derecho y sus instrumentos, tales como la ley y los contratos.", 
-                artworkDescription: "" 
-            },
-            4: { 
                 title: "Goodbye Beling", 
                 subtitle: "", 
                 lead: "", 
-                text: "Es una obra en homenaje al Teórico del derecho Penal: Ernst von Beling, que tiene por propósito reflejar la transformación sustancial que se ha producido en el s. XXI del constructo teórico del DELITO-TIPO. La figura delictiva o figura de delito muta desde una figura o esquema, que aunque se compone de distintos elementos opera en una unidad finamente delineada, a un esquema texturizado, con porosidades que revelan el cambio de paradigma en la concepción liberal de lo que es el Derecho Penal.", 
+                text: "Es una obra en homenaje al Teórico del derecho Penal: Ernst von Beling, particularmente a su texto \"LA DOCTRINA DEL DELITO TIPO\", que tiene por propósito reflejar la transformación sustancial que se ha producido en el s. XXI el constructo teórico del DELITO-TIPO. Así en un soporte de ligamento de tela se recrea el denominado entramado de ilicitud UNRECHT, sobre el que se representarán visualmente la convivencia normativa de figuras delictivas finamente delineadas con otras de tipo más bosquejadas o texturizadas en técnica de brocado andino.", 
                 artworkDescription: "",
                 image: "https://maremano.github.io/artefactos-juridicos/goodbyebelling.png"
             },
-            5: { 
+            4: { 
                 title: "Plan Regulador", 
                 subtitle: "", 
                 lead: "", 
-                text: "Es una obra que tiene por propósito visualizar plásticamente como el derecho intenta armonizar el ejercicio de la propiedad en el territorio urbano por parte de quienes participan en éste. Y a su vez las tensiones que se generan en la concurrencia del interés privado y el interés público en el ejercicio del derecho de propiedad.", 
+                text: "Es una obra que tiene por propósito visualizar plásticamente como el ordenamiento no sólo enmarca la conducta de las personas sino también configura y proyecta por medio de reglas la composición del espacio urbano. De este modo se esboza un instrumento urbanístico en un soporte de tela, que será intervenido por medio de diversas técnicas textiles. Lo que hará expresar la distancia nomológica de la material, mediante las tensiones que se suscitan en la superposición entre ambas dimensiones, y los conflictos jurídicos que se generan con ello.", 
                 artworkDescription: "" 
             },
-            6: { 
+            5: { 
                 title: "Red Ponsabilidad", 
                 subtitle: "", 
                 lead: "", 
-                text: "Es una obra que tiene por objeto visualizar hacer aparecer la red o soporte jurídico invisible de la que es parte el denominado sujeto de derecho. Estar sujeto o sujeta a esta red, emerge a través de la ruptura que se produce en esta y la generación de responsabilidad por parte del infractor.", 
+                text: "Es una obra que tiene por objeto dejar entrever la red o soporte jurídico imperceptible de la que es parte el denominado \"sujeto de derecho\" y sobre la que se sostiene una multiplicidad de instituciones jurídicas. Estar sujeto o sujeta a esta red, por lo común se observa a través de la ruptura que se produce en ésta, sin perjuicio de que su existencia es apriorística. Así, sobre un soporte textil en técnica de tejido reticular se dibujarán por medio del bordado variopintas instituciones del derecho y como la ruptura de estas evidencia la red que las sostiene.", 
                 artworkDescription: "" 
             },
-            7: { 
+            6: { 
                 title: "Entramados Internacionales", 
                 subtitle: "", 
                 lead: "", 
-                text: "Es una obra por medio de la cual se releva como se integran los instrumentos internacionales pactados por el ordenamiento nacional, y como la inserción de estos a la legislación nacional de manera directa, sin mayores adecuaciones jurídicas, producen tensiones y marañas normativas que afectan la aplicación del derecho interno produciendo tensión social en la comunidad.", 
+                text: "Es una obra por medio de la cual se presenta cómo se integran los instrumentos de derecho internacional al ordenamiento nacional. Y como la incorporación de estos a la legislación nacional de manera directa, en un carácter de supralegal y sin mayores adecuaciones, producen tensiones y marañas normativas que afectan la aplicación del derecho interno y la base democrática de nuestra constitucionalidad. Asimismo, por medio de la confección de Chile en técnica de faz de trama, se le incorporarán hilos de trama y urdimbre en representación a instrumentos internacionales que suscitan tensiones, marañas y desarmonía en el entramado jurídico nacional.", 
                 artworkDescription: "" 
             },
             exposiciones: { title: "Exposiciones", subtitle: "", lead: "", text: "Información próximamente." },
@@ -606,7 +622,7 @@
                 title: "About Me", 
                 subtitle: "", 
                 lead: "", 
-                text: "Magdalena es abogada, licenciada en Ciencias Jurídicas y Arte de la Universidad de Chile, más post título en Gestión Cultural de la Pontificia Universidad Católica con una trayectoria en la disciplina artística y patrimonial vinculada al arte textil." 
+                text: "Magdalena es abogada, licenciada en Ciencias Jurídicas y Arte de la Universidad de Chile, más postítulo en Gestión Cultural de la Pontificia Universidad Católica con una trayectoria en la disciplina artística y patrimonial vinculada al arte textil." 
             }
         };
         
@@ -623,13 +639,18 @@
             const artworkImageContainer = document.getElementById('artwork-image-container');
             const homeGifContainer = document.getElementById('home-gif-container');
             const descPanel = document.getElementById('description');
+            const mainElement = document.querySelector('main');
+            const textContent = document.querySelector('.text-content');
             
             // Determinar si es una obra individual
-            const isArtwork = typeof section === 'number' || ['1','2','3','4','5','6','7'].includes(String(section));
+            const isArtwork = typeof section === 'number' || ['1','2','3','4','5','6'].includes(String(section));
             
             if (section === 'home') {
                 // En HOME: mostrar GIF, ocultar todo lo demás
                 homeGifContainer.classList.add('show');
+                mainElement.classList.remove('with-top-padding');
+                textContent.classList.remove('with-top-padding');
+                textContent.classList.add('with-small-padding');
                 cvDownload.classList.remove('show');
                 aboutImage.classList.remove('show');
                 artworkImageContainer.style.display = 'none';
@@ -637,6 +658,9 @@
             } else if (section === 'about') {
                 // En ABOUT ME: mostrar botón de CV e imagen, ocultar GIF
                 homeGifContainer.classList.remove('show');
+                mainElement.classList.add('with-top-padding');
+                textContent.classList.remove('with-small-padding');
+                textContent.classList.remove('with-top-padding');
                 cvDownload.classList.add('show');
                 aboutImage.classList.add('show');
                 artworkImageContainer.style.display = 'none';
@@ -644,6 +668,9 @@
             } else if (isArtwork) {
                 // En OBRAS INDIVIDUALES: mostrar layout de dos columnas si hay imagen
                 homeGifContainer.classList.remove('show');
+                mainElement.classList.add('with-top-padding');
+                textContent.classList.remove('with-small-padding');
+                textContent.classList.remove('with-top-padding');
                 cvDownload.classList.remove('show');
                 aboutImage.classList.remove('show');
                 
@@ -659,6 +686,9 @@
             } else {
                 // En EXPOSICIONES u otras: ocultar todo
                 homeGifContainer.classList.remove('show');
+                mainElement.classList.add('with-top-padding');
+                textContent.classList.remove('with-small-padding');
+                textContent.classList.remove('with-top-padding');
                 cvDownload.classList.remove('show');
                 aboutImage.classList.remove('show');
                 artworkImageContainer.style.display = 'none';

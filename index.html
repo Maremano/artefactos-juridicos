@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -152,6 +153,12 @@
         
         main.with-top-padding {
             padding-top: 7rem;
+        }
+        
+        main.about-section {
+            min-height: auto;
+            padding-top: 7rem;
+            padding-bottom: 2rem;
         }
         
         .content-wrapper {
@@ -653,6 +660,7 @@
                 // En HOME: mostrar GIF, ocultar todo lo demás
                 homeGifContainer.classList.add('show');
                 mainElement.classList.remove('with-top-padding');
+                mainElement.classList.remove('about-section');
                 textContent.classList.remove('with-top-padding');
                 textContent.classList.add('with-small-padding');
                 cvDownload.classList.remove('show');
@@ -663,6 +671,7 @@
                 // En ABOUT ME: mostrar botón de CV e imagen, ocultar GIF
                 homeGifContainer.classList.remove('show');
                 mainElement.classList.add('with-top-padding');
+                mainElement.classList.add('about-section');
                 textContent.classList.remove('with-small-padding');
                 textContent.classList.remove('with-top-padding');
                 cvDownload.classList.add('show');
@@ -673,6 +682,7 @@
                 // En OBRAS INDIVIDUALES: mostrar layout de dos columnas si hay imagen
                 homeGifContainer.classList.remove('show');
                 mainElement.classList.add('with-top-padding');
+                mainElement.classList.remove('about-section');
                 textContent.classList.remove('with-small-padding');
                 textContent.classList.remove('with-top-padding');
                 cvDownload.classList.remove('show');
@@ -691,6 +701,7 @@
                 // En EXPOSICIONES u otras: ocultar todo
                 homeGifContainer.classList.remove('show');
                 mainElement.classList.add('with-top-padding');
+                mainElement.classList.remove('about-section');
                 textContent.classList.remove('with-small-padding');
                 textContent.classList.remove('with-top-padding');
                 cvDownload.classList.remove('show');

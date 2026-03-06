@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,7 +6,7 @@
 <title>San Juan Constructora</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTYwIDE3MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cG9seWdvbiBwb2ludHM9IjgwLDEzOCAxNjAsMTA5IDgwLDgwIDAsMTA5IiBmaWxsPSIjYzhiOTlhIiBvcGFjaXR5PSIwLjg4Ii8+CiAgPHBvbHlnb24gcG9pbnRzPSI4MCwxMDYgMTYwLDc3IDgwLDQ4IDAsNzciIGZpbGw9IiNkNGEwNTAiIG9wYWNpdHk9IjAuODUiLz4KICA8cG9seWdvbiBwb2ludHM9IjgwLDc0IDE2MCw0NSA4MCwxNiAwLDQ1IiBmaWxsPSIjZTA4ODQwIiBvcGFjaXR5PSIwLjg1Ii8+CiAgPHBvbHlnb24gcG9pbnRzPSI4MCw0MiAxNjAsMTMgODAsLTE2IDAsMTMiIGZpbGw9IiM4YTlhM2EiIG9wYWNpdHk9IjEuMCIvPgo8L3N2Zz4=">
 <link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTYwIDE3MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cG9seWdvbiBwb2ludHM9IjgwLDEzOCAxNjAsMTA5IDgwLDgwIDAsMTA5IiBmaWxsPSIjYzhiOTlhIiBvcGFjaXR5PSIwLjg4Ii8+CiAgPHBvbHlnb24gcG9pbnRzPSI4MCwxMDYgMTYwLDc3IDgwLDQ4IDAsNzciIGZpbGw9IiNkNGEwNTAiIG9wYWNpdHk9IjAuODUiLz4KICA8cG9seWdvbiBwb2ludHM9IjgwLDc0IDE2MCw0NSA4MCwxNiAwLDQ1IiBmaWxsPSIjZTA4ODQwIiBvcGFjaXR5PSIwLjg1Ii8+CiAgPHBvbHlnb24gcG9pbnRzPSI4MCw0MiAxNjAsMTMgODAsLTE2IDAsMTMiIGZpbGw9IiM4YTlhM2EiIG9wYWNpdHk9IjEuMCIvPgo8L3N2Zz4=">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&family=Outfit:wght@200;300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&family=Playfair+Display:wght@700;800;900&family=Outfit:wght@200;300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #111111;
@@ -28,6 +27,9 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; overflow-x: hidden; }
+
+  /* Offset scroll target for fixed nav (80px nav height + 20px breathing room) */
+  section[id] { scroll-margin-top: 100px; }
 
   body {
     font-family: 'Outfit', sans-serif;
@@ -73,20 +75,20 @@
   }
 
   .nav-logo-text span:first-child {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
   }
 
   .nav-logo-text span:last-child {
-    font-family: 'Space Mono', monospace;
-    font-size: 8px;
-    font-weight: 400;
-    letter-spacing: 0.2em;
+    font-family: 'Playfair Display', serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--gray-text);
-    margin-top: 3px;
+    margin-top: 4px;
   }
 
   .nav-links {
@@ -109,16 +111,23 @@
   .nav-links a:hover { color: var(--gray-text); }
 
   .nav-cta {
-    background: var(--black);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
     color: var(--white) !important;
-    padding: 10px 22px;
-    font-size: 11px !important;
-    letter-spacing: 0.14em !important;
+    padding: 10px 20px;
+    font-size: 10px !important;
+    letter-spacing: 0.12em !important;
     text-decoration: none;
-    transition: background 0.2s !important;
+    transition: background 0.2s, transform 0.2s !important;
+    white-space: nowrap;
+    border-radius: 2px;
   }
 
-  .nav-cta:hover { background: #333 !important; color: var(--white) !important; }
+  .nav-cta svg { flex-shrink: 0; }
+
+  .nav-cta:hover { background: #1da851 !important; color: var(--white) !important; transform: translateY(-1px); }
 
   /* HERO */
   .hero {
@@ -226,9 +235,9 @@
   }
 
   .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(64px, 9vw, 120px);
-    font-weight: 600;
+    font-weight: 900;
     line-height: 0.98;
     letter-spacing: -0.01em;
     margin-bottom: 28px;
@@ -304,9 +313,9 @@
   .stat { text-align: right; }
 
   .stat-number {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 56px;
-    font-weight: 600;
+    font-weight: 900;
     line-height: 1;
     letter-spacing: -0.01em;
   }
@@ -340,9 +349,9 @@
   }
 
   .about h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(40px, 4.5vw, 62px);
-    font-weight: 600;
+    font-weight: 900;
     line-height: 1.1;
     letter-spacing: 0em;
     margin-bottom: 28px;
@@ -453,9 +462,9 @@
   }
 
   .value-item h4 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 26px;
-    font-weight: 600;
+    font-weight: 900;
     letter-spacing: 0.01em;
     margin-bottom: 8px;
     line-height: 1.1;
@@ -497,9 +506,9 @@
   }
 
   .projects-header h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(40px, 4.5vw, 62px);
-    font-weight: 600;
+    font-weight: 900;
     line-height: 1.05;
     letter-spacing: 0em;
   }
@@ -651,9 +660,9 @@
   }
 
   .project-info h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(40px, 4.5vw, 58px);
-    font-weight: 600;
+    font-weight: 900;
     line-height: 1.05;
     letter-spacing: 0em;
     margin-bottom: 20px;
@@ -774,9 +783,9 @@
 
   .ig-logo-name span:first-child {
     display: block;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--white);
@@ -823,9 +832,9 @@
   }
 
   .instagram-section h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(32px, 3.5vw, 52px);
-    font-weight: 600;
+    font-weight: 900;
     line-height: 1.1;
     letter-spacing: 0.01em;
     color: var(--white) !important;
@@ -900,9 +909,9 @@
   }
 
   .contact h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(40px, 4.5vw, 62px);
-    font-weight: 600;
+    font-weight: 900;
     line-height: 1.1;
     letter-spacing: 0em;
     margin-bottom: 20px;
@@ -1030,9 +1039,9 @@
   }
 
   footer .footer-brand {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 900;
     letter-spacing: 0.06em;
     color: var(--black);
   }
@@ -1167,9 +1176,9 @@
     pointer-events: all;
   }
   .mobile-menu a {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 48px;
-    font-weight: 600;
+    font-weight: 900;
     text-decoration: none;
     color: var(--black);
     letter-spacing: 0.02em;
@@ -1550,12 +1559,12 @@
 
 
   .sj-logo-svg {
-    height: 42px;
+    height: 54px;
     width: auto;
     display: block;
   }
   .footer-logo-svg {
-    height: 38px;
+    height: 48px;
     width: auto;
     display: block;
   }
@@ -1570,7 +1579,7 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <svg class="sj-logo-svg" viewBox="0 0 160 170" xmlns="http://www.w3.org/2000/svg">
+    <svg class="sj-logo-svg" viewBox="-4 -20 168 192" xmlns="http://www.w3.org/2000/svg">
     <polygon points="80,138 160,109 80,80 0,109" fill="#c8b99a" opacity="0.88"/>
     <polygon points="80,106 160,77 80,48 0,77" fill="#d4a050" opacity="0.85"/>
     <polygon points="80,74 160,45 80,16 0,45" fill="#e08840" opacity="0.85"/>
@@ -1582,7 +1591,10 @@
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="https://wa.me/56948566707?text=Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20San%20Juan%20Constructora" target="_blank" class="nav-cta">WhatsApp</a></li>
+    <li><a href="https://wa.me/56948566707?text=Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20San%20Juan%20Constructora" target="_blank" class="nav-cta">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Contactar
+    </a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
@@ -2115,7 +2127,7 @@
   <!-- Logo column -->
   <div class="ig-logo-column">
     <!-- Modern redrawn logo mark as SVG -->
-    <svg class="ig-logo-mark" viewBox="0 0 160 170" xmlns="http://www.w3.org/2000/svg">
+    <svg class="ig-logo-mark" viewBox="-4 -20 168 192" xmlns="http://www.w3.org/2000/svg">
       <polygon points="80,138 160,109 80,80 0,109" fill="#c8b99a" opacity="0.88"/>
       <polygon points="80,106 160,77 80,48 0,77" fill="#d4a050" opacity="0.85"/>
       <polygon points="80,74 160,45 80,16 0,45" fill="#e08840" opacity="0.85"/>
@@ -2179,7 +2191,7 @@
 <footer>
   <div class="footer-left">
     <a href="#" class="footer-logo-link">
-      <svg class="sj-logo-svg footer-logo-svg" viewBox="0 0 160 170" xmlns="http://www.w3.org/2000/svg">
+      <svg class="sj-logo-svg footer-logo-svg" viewBox="-4 -20 168 192" xmlns="http://www.w3.org/2000/svg">
       <polygon points="80,138 160,109 80,80 0,109" fill="#c8b99a" opacity="0.88"/>
       <polygon points="80,106 160,77 80,48 0,77" fill="#d4a050" opacity="0.85"/>
       <polygon points="80,74 160,45 80,16 0,45" fill="#e08840" opacity="0.85"/>

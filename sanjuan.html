@@ -5,7 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>San Juan Constructora</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,200;0,300;0,400;1,200;1,300&family=Outfit:wght@200;300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTYwIDE3MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cG9seWdvbiBwb2ludHM9IjgwLDEzOCAxNjAsMTA5IDgwLDgwIDAsMTA5IiBmaWxsPSIjYzhiOTlhIiBvcGFjaXR5PSIwLjg4Ii8+CiAgPHBvbHlnb24gcG9pbnRzPSI4MCwxMDYgMTYwLDc3IDgwLDQ4IDAsNzciIGZpbGw9IiNkNGEwNTAiIG9wYWNpdHk9IjAuODUiLz4KICA8cG9seWdvbiBwb2ludHM9IjgwLDc0IDE2MCw0NSA4MCwxNiAwLDQ1IiBmaWxsPSIjZTA4ODQwIiBvcGFjaXR5PSIwLjg1Ii8+CiAgPHBvbHlnb24gcG9pbnRzPSI4MCw0MiAxNjAsMTMgODAsLTE2IDAsMTMiIGZpbGw9IiM4YTlhM2EiIG9wYWNpdHk9IjEuMCIvPgo8L3N2Zz4=">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTYwIDE3MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cG9seWdvbiBwb2ludHM9IjgwLDEzOCAxNjAsMTA5IDgwLDgwIDAsMTA5IiBmaWxsPSIjYzhiOTlhIiBvcGFjaXR5PSIwLjg4Ii8+CiAgPHBvbHlnb24gcG9pbnRzPSI4MCwxMDYgMTYwLDc3IDgwLDQ4IDAsNzciIGZpbGw9IiNkNGEwNTAiIG9wYWNpdHk9IjAuODUiLz4KICA8cG9seWdvbiBwb2ludHM9IjgwLDc0IDE2MCw0NSA4MCwxNiAwLDQ1IiBmaWxsPSIjZTA4ODQwIiBvcGFjaXR5PSIwLjg1Ii8+CiAgPHBvbHlnb24gcG9pbnRzPSI4MCw0MiAxNjAsMTMgODAsLTE2IDAsMTMiIGZpbGw9IiM4YTlhM2EiIG9wYWNpdHk9IjEuMCIvPgo8L3N2Zz4=">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&family=Outfit:wght@200;300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #111111;
@@ -71,9 +73,9 @@
   }
 
   .nav-logo-text span:first-child {
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
-    font-weight: 300;
+    font-weight: 600;
     letter-spacing: 0.06em;
   }
 
@@ -224,9 +226,9 @@
   }
 
   .hero h1 {
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(64px, 9vw, 120px);
-    font-weight: 200;
+    font-weight: 600;
     line-height: 0.98;
     letter-spacing: -0.01em;
     margin-bottom: 28px;
@@ -302,9 +304,9 @@
   .stat { text-align: right; }
 
   .stat-number {
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 56px;
-    font-weight: 200;
+    font-weight: 600;
     line-height: 1;
     letter-spacing: -0.01em;
   }
@@ -338,9 +340,9 @@
   }
 
   .about h2 {
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(40px, 4.5vw, 62px);
-    font-weight: 200;
+    font-weight: 600;
     line-height: 1.1;
     letter-spacing: 0em;
     margin-bottom: 28px;
@@ -451,9 +453,9 @@
   }
 
   .value-item h4 {
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 26px;
-    font-weight: 300;
+    font-weight: 600;
     letter-spacing: 0.01em;
     margin-bottom: 8px;
     line-height: 1.1;
@@ -495,9 +497,9 @@
   }
 
   .projects-header h2 {
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(40px, 4.5vw, 62px);
-    font-weight: 200;
+    font-weight: 600;
     line-height: 1.05;
     letter-spacing: 0em;
   }
@@ -549,8 +551,20 @@
     border-bottom-color: var(--black);
   }
 
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; animation: fadeUp 0.4s ease both; }
+  .tab-panel { 
+    display: block;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .tab-panel.active { 
+    visibility: visible;
+    height: auto;
+    overflow: visible;
+    pointer-events: auto;
+    animation: fadeUp 0.4s ease both;
+  }
 
   .project-display {
     display: grid;
@@ -561,124 +575,24 @@
 
   /* REEL EMBED */
   .reel-frame {
-    position: relative;
     width: 100%;
-    max-width: 340px;
+    max-width: 380px;
     margin: 0 auto;
     flex-shrink: 0;
   }
 
-  .reel-border {
+  /* Let Instagram embed render freely */
+  .ig-embed-wrap {
     border: 1px solid rgba(122,140,46,0.2);
-    background: rgba(255,255,255,0.85);
-    padding: 0;
-    box-shadow: 0 12px 48px rgba(0,0,0,0.12);
-    overflow: hidden;
-    position: relative;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    background: #fff;
+    min-height: 400px;
   }
 
-  .reel-inner {
-    position: relative;
-    width: 100%;
-    padding-top: 100%; /* square fallback */
-    background: #1a1a1a;
-    overflow: hidden;
-  }
-
-  /* Thumbnail loaded from oEmbed */
-  .reel-thumb {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease, opacity 0.3s;
-  }
-
-  .reel-thumb:hover { transform: scale(1.03); }
-
-  /* Overlay with play button */
-  .reel-overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s;
-    text-decoration: none;
-  }
-
-  .reel-inner:hover .reel-overlay { opacity: 1; }
-
-  .reel-play-btn {
-    width: 56px; height: 56px;
-    border: 1.5px solid rgba(255,255,255,0.8);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(4px);
-    transition: transform 0.2s, background 0.2s;
-  }
-
-  .reel-play-btn svg {
-    width: 20px; height: 20px;
-    fill: white;
-    margin-left: 3px;
-  }
-
-  .reel-overlay:hover .reel-play-btn {
-    transform: scale(1.1);
-    background: rgba(255,255,255,0.22);
-  }
-
-  /* Skeleton loader while fetching */
-  .reel-skeleton {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, #e8ecdb 25%, #f0f2e8 50%, #e8ecdb 75%);
-    background-size: 200% 100%;
-    animation: skeletonShimmer 1.4s infinite;
-  }
-
-  @keyframes skeletonShimmer {
-    0%   { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-  }
-
-  /* Error state */
-  .reel-error {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: #0e0e0c;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    color: rgba(255,255,255,0.6);
-    text-decoration: none;
-  }
-
-  .reel-error.show {
-    display: flex;
-  }
-
-  .reel-error svg { opacity: 0.5; }
-
-  .reel-error span {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 0 20px;
+  .ig-embed-wrap .instagram-media {
+    min-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
   }
 
   .reel-tag {
@@ -737,9 +651,9 @@
   }
 
   .project-info h3 {
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(40px, 4.5vw, 58px);
-    font-weight: 200;
+    font-weight: 600;
     line-height: 1.05;
     letter-spacing: 0em;
     margin-bottom: 20px;
@@ -860,9 +774,9 @@
 
   .ig-logo-name span:first-child {
     display: block;
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 24px;
-    font-weight: 200;
+    font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--white);
@@ -909,9 +823,9 @@
   }
 
   .instagram-section h2 {
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(32px, 3.5vw, 52px);
-    font-weight: 200;
+    font-weight: 600;
     line-height: 1.1;
     letter-spacing: 0.01em;
     color: var(--white) !important;
@@ -986,9 +900,9 @@
   }
 
   .contact h2 {
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: clamp(40px, 4.5vw, 62px);
-    font-weight: 200;
+    font-weight: 600;
     line-height: 1.1;
     letter-spacing: 0em;
     margin-bottom: 20px;
@@ -1116,9 +1030,9 @@
   }
 
   footer .footer-brand {
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 600;
     letter-spacing: 0.06em;
     color: var(--black);
   }
@@ -1253,9 +1167,9 @@
     pointer-events: all;
   }
   .mobile-menu a {
-    font-family: 'Cormorant', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 48px;
-    font-weight: 200;
+    font-weight: 600;
     text-decoration: none;
     color: var(--black);
     letter-spacing: 0.02em;
@@ -1662,6 +1576,10 @@
     <polygon points="80,74 160,45 80,16 0,45" fill="#e08840" opacity="0.85"/>
     <polygon points="80,42 160,13 80,-16 0,13" fill="#8a9a3a" opacity="1.0"/>
   </svg>
+    <div class="nav-logo-text">
+      <span>San Juan</span>
+      <span>Constructora</span>
+    </div>
   </a>
   <ul class="nav-links">
     <li><a href="https://wa.me/56948566707?text=Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20San%20Juan%20Constructora" target="_blank" class="nav-cta">WhatsApp</a></li>
@@ -1817,7 +1735,7 @@
         <rect class="draw" style="--len:280;--dur:0.4s;--delay:17.6s" x="62" y="410" width="160" height="44"/>
         <line class="draw" style="--len:160;--dur:0.3s;--delay:18s" x1="62" y1="425" x2="222" y2="425"/>
       </g>
-      <text class="draw-fade" style="--dur:0.3s;--delay:18.1s" fill="#4a4a38" font-family="'Cormorant', serif" font-size="9" font-style="italic" x="68" y="421" opacity="0.6">PLANTA ARQUITECTÓNICA</text>
+      <text class="draw-fade" style="--dur:0.3s;--delay:18.1s" fill="#4a4a38" font-family="'Cormorant Garamond', serif" font-size="9" font-style="italic" x="68" y="421" opacity="0.6">PLANTA ARQUITECTÓNICA</text>
       <text class="draw-fade" style="--dur:0.3s;--delay:18.3s" fill="#6a6a52" font-family="'Space Mono', monospace" font-size="7" x="68" y="436" letter-spacing="0.06em" opacity="0.5">ESC. 1:50  —  SAN JUAN CONSTRUCTORA</text>
 
     </svg>
@@ -1966,21 +1884,14 @@
     <div class="tab-panel active" id="tab-comercial">
       <div class="project-display">
         <div class="reel-frame">
-          <div class="reel-border">
-            <div class="reel-tag">Comercial</div>
-            <div class="reel-inner" data-igurl="https://www.instagram.com/p/DTiy1f0gYYi/">
-              <div class="reel-skeleton"></div>
-              <img class="reel-thumb" src="" alt="Rompeolas Maitencillo" style="display:none">
-              <a class="reel-overlay" href="https://www.instagram.com/p/DTiy1f0gYYi/" target="_blank">
-                <div class="reel-play-btn">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </a>
-              <a class="reel-error" href="https://www.instagram.com/p/DTiy1f0gYYi/" target="_blank">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                <span>Ver en Instagram</span>
-              </a>
-            </div>
+          <div class="reel-border ig-embed-wrap">
+            <blockquote 
+              class="instagram-media" 
+              data-instgrm-permalink="https://www.instagram.com/p/DTiy1f0gYYi/"
+              data-instgrm-version="14"
+              data-instgrm-captioned
+              style="background:#FFF; border:0; margin:0; max-width:100%; width:100%;">
+            </blockquote>
           </div>
           <div class="reel-caption">
             <span>@sanjuanconstructora</span>
@@ -2017,21 +1928,14 @@
     <div class="tab-panel" id="tab-oficinas">
       <div class="project-display">
         <div class="reel-frame">
-          <div class="reel-border">
-            <div class="reel-tag">Oficinas</div>
-            <div class="reel-inner" data-igurl="https://www.instagram.com/p/DJFDtpMRi3b/">
-              <div class="reel-skeleton"></div>
-              <img class="reel-thumb" src="" alt="Procure Las Condes" style="display:none">
-              <a class="reel-overlay" href="https://www.instagram.com/p/DJFDtpMRi3b/" target="_blank">
-                <div class="reel-play-btn">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </a>
-              <a class="reel-error" href="https://www.instagram.com/p/DJFDtpMRi3b/" target="_blank">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                <span>Ver en Instagram</span>
-              </a>
-            </div>
+          <div class="reel-border ig-embed-wrap">
+            <blockquote 
+              class="instagram-media" 
+              data-instgrm-permalink="https://www.instagram.com/p/DJFDtpMRi3b/"
+              data-instgrm-version="14"
+              data-instgrm-captioned
+              style="background:#FFF; border:0; margin:0; max-width:100%; width:100%;">
+            </blockquote>
           </div>
           <div class="reel-caption">
             <span>@sanjuanconstructora</span>
@@ -2068,21 +1972,14 @@
     <div class="tab-panel" id="tab-institucional">
       <div class="project-display">
         <div class="reel-frame">
-          <div class="reel-border">
-            <div class="reel-tag">Institucional</div>
-            <div class="reel-inner" data-igurl="https://www.instagram.com/p/DQIKHx5Dj_I/">
-              <div class="reel-skeleton"></div>
-              <img class="reel-thumb" src="" alt="Colegio Huelen" style="display:none">
-              <a class="reel-overlay" href="https://www.instagram.com/p/DQIKHx5Dj_I/" target="_blank">
-                <div class="reel-play-btn">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </a>
-              <a class="reel-error" href="https://www.instagram.com/p/DQIKHx5Dj_I/" target="_blank">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                <span>Ver en Instagram</span>
-              </a>
-            </div>
+          <div class="reel-border ig-embed-wrap">
+            <blockquote 
+              class="instagram-media" 
+              data-instgrm-permalink="https://www.instagram.com/p/DQIKHx5Dj_I/"
+              data-instgrm-version="14"
+              data-instgrm-captioned
+              style="background:#FFF; border:0; margin:0; max-width:100%; width:100%;">
+            </blockquote>
           </div>
           <div class="reel-caption">
             <span>@sanjuanconstructora</span>
@@ -2121,18 +2018,14 @@
         <div class="reel-frame">
           <div class="reel-border">
             <div class="reel-tag">Remodelación</div>
-            <div class="reel-inner" data-igurl="https://www.instagram.com/p/DFP7FgoxTft/?img_index=5">
-              <div class="reel-skeleton"></div>
-              <img class="reel-thumb" src="" alt="Casa Los Trapenses" style="display:none">
-              <a class="reel-overlay" href="https://www.instagram.com/p/DFP7FgoxTft/?img_index=5" target="_blank">
-                <div class="reel-play-btn">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </a>
-              <a class="reel-error" href="https://www.instagram.com/p/DFP7FgoxTft/?img_index=5" target="_blank">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                <span>Ver en Instagram</span>
-              </a>
+            <div class="reel-embed-wrap">
+              <blockquote
+                class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/p/DFP7FgoxTft/"
+                data-instgrm-version="14"
+                style="background:#FFF;border:0;border-radius:0;margin:0 !important;max-width:100%;min-width:100%;padding:0;width:100% !important;">
+                <a href="https://www.instagram.com/p/DFP7FgoxTft/" target="_blank">Casa Los Trapenses</a>
+              </blockquote>
             </div>
           </div>
           <div class="reel-caption">
@@ -2172,18 +2065,14 @@
         <div class="reel-frame">
           <div class="reel-border">
             <div class="reel-tag">Segunda Vivienda</div>
-            <div class="reel-inner" data-igurl="https://www.instagram.com/p/CKkSblVnvcQ/?img_index=3">
-              <div class="reel-skeleton"></div>
-              <img class="reel-thumb" src="" alt="Casa Pichilemu" style="display:none">
-              <a class="reel-overlay" href="https://www.instagram.com/p/CKkSblVnvcQ/?img_index=3" target="_blank">
-                <div class="reel-play-btn">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </a>
-              <a class="reel-error" href="https://www.instagram.com/p/CKkSblVnvcQ/?img_index=3" target="_blank">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                <span>Ver en Instagram</span>
-              </a>
+            <div class="reel-embed-wrap">
+              <blockquote
+                class="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/p/CKkSblVnvcQ/"
+                data-instgrm-version="14"
+                style="background:#FFF;border:0;border-radius:0;margin:0 !important;max-width:100%;min-width:100%;padding:0;width:100% !important;">
+                <a href="https://www.instagram.com/p/CKkSblVnvcQ/" target="_blank">Casa Pichilemu</a>
+              </blockquote>
             </div>
           </div>
           <div class="reel-caption">
@@ -2347,6 +2236,10 @@
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('tab-' + id).classList.add('active');
     btn.classList.add('active');
+    // Re-process Instagram embeds when new tab becomes visible
+    setTimeout(function() {
+      if (window.instgrm) window.instgrm.Embeds.process();
+    }, 100);
   }
 
   // ── SCROLL REVEAL ──
@@ -2467,50 +2360,7 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('.hero-stats').forEach(el => statsObserver.observe(el));
 
-  // ── INSTAGRAM oEMBED THUMBNAILS ──
-  // Uses Instagram's public oEmbed API to fetch real post thumbnails
-  async function loadReelThumbnails() {
-    const reelInners = document.querySelectorAll('.reel-inner[data-igurl]');
-
-    for (const inner of reelInners) {
-      const igUrl = inner.dataset.igurl;
-      const thumb = inner.querySelector('.reel-thumb');
-      const skeleton = inner.querySelector('.reel-skeleton');
-      const errorEl = inner.querySelector('.reel-error');
-
-      try {
-        // Use Instagram oEmbed endpoint (no auth needed for public posts)
-        const oembedUrl = `https://graph.facebook.com/v18.0/instagram_oembed?url=${encodeURIComponent(igUrl)}&maxwidth=640&fields=thumbnail_url,title&access_token=`;
-        
-        // Fallback: use a CORS proxy with the public oembed endpoint
-        const publicUrl = `https://api.instagram.com/oembed/?url=${encodeURIComponent(igUrl)}&maxwidth=640`;
-        
-        const res = await fetch(publicUrl);
-        if (!res.ok) throw new Error('oEmbed failed');
-        const data = await res.json();
-
-        if (data.thumbnail_url) {
-          thumb.src = data.thumbnail_url;
-          thumb.style.display = 'block';
-          thumb.onload = () => {
-            skeleton.style.display = 'none';
-          };
-          thumb.onerror = () => {
-            skeleton.style.display = 'none';
-            errorEl.classList.add('show');
-          };
-        } else {
-          throw new Error('No thumbnail');
-        }
-      } catch (e) {
-        // Show elegant error/CTA state
-        skeleton.style.display = 'none';
-        errorEl.classList.add('show');
-      }
-    }
-  }
-
-  loadReelThumbnails();
+  // Instagram embeds loaded via embed.js
 
 
   const nav = document.querySelector('nav');
@@ -2522,5 +2372,17 @@
     }
   }, { passive: true });
 </script>
+
+
+
+  <!-- Instagram Embed -->
+  <script>
+    window.addEventListener('load', function() {
+      if (window.instgrm) {
+        window.instgrm.Embeds.process();
+      }
+    });
+  </script>
+  <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>

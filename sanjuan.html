@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -562,62 +563,122 @@
   .reel-frame {
     position: relative;
     width: 100%;
-    max-width: 380px;
+    max-width: 340px;
     margin: 0 auto;
+    flex-shrink: 0;
   }
 
   .reel-border {
     border: 1px solid rgba(122,140,46,0.2);
     background: rgba(255,255,255,0.85);
-    padding: 8px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    padding: 0;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+    overflow: hidden;
+    position: relative;
   }
 
   .reel-inner {
     position: relative;
     width: 100%;
-    padding-top: 177.78%; /* 9:16 ratio for reels */
+    padding-top: 100%; /* square fallback */
     background: #1a1a1a;
     overflow: hidden;
   }
 
-  .reel-inner iframe {
+  /* Thumbnail loaded from oEmbed */
+  .reel-thumb {
     position: absolute;
     top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, opacity 0.3s;
   }
 
-  .reel-placeholder {
+  .reel-thumb:hover { transform: scale(1.03); }
+
+  /* Overlay with play button */
+  .reel-overlay {
     position: absolute;
     top: 0; left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%);
     display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-decoration: none;
+  }
+
+  .reel-inner:hover .reel-overlay { opacity: 1; }
+
+  .reel-play-btn {
+    width: 56px; height: 56px;
+    border: 1.5px solid rgba(255,255,255,0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(4px);
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .reel-play-btn svg {
+    width: 20px; height: 20px;
+    fill: white;
+    margin-left: 3px;
+  }
+
+  .reel-overlay:hover .reel-play-btn {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.22);
+  }
+
+  /* Skeleton loader while fetching */
+  .reel-skeleton {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, #e8ecdb 25%, #f0f2e8 50%, #e8ecdb 75%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.4s infinite;
+  }
+
+  @keyframes skeletonShimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Error state */
+  .reel-error {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #0e0e0c;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    background: #111;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.2s;
+    gap: 14px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
   }
 
-  .reel-placeholder:hover { background: #1a1a1a; }
-
-  .reel-placeholder svg {
-    width: 48px;
-    height: 48px;
-    opacity: 0.7;
+  .reel-error.show {
+    display: flex;
   }
 
-  .reel-placeholder span {
-    font-size: 12px;
-    letter-spacing: 0.1em;
+  .reel-error svg { opacity: 0.5; }
+
+  .reel-error span {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    opacity: 0.5;
+    text-align: center;
+    padding: 0 20px;
   }
 
   .reel-tag {
@@ -1907,13 +1968,16 @@
         <div class="reel-frame">
           <div class="reel-border">
             <div class="reel-tag">Comercial</div>
-            <div class="reel-inner">
-              <a class="reel-placeholder" href="https://www.instagram.com/p/DTiy1f0gYYi/" target="_blank">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
+            <div class="reel-inner" data-igurl="https://www.instagram.com/p/DTiy1f0gYYi/">
+              <div class="reel-skeleton"></div>
+              <img class="reel-thumb" src="" alt="Rompeolas Maitencillo" style="display:none">
+              <a class="reel-overlay" href="https://www.instagram.com/p/DTiy1f0gYYi/" target="_blank">
+                <div class="reel-play-btn">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </a>
+              <a class="reel-error" href="https://www.instagram.com/p/DTiy1f0gYYi/" target="_blank">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 <span>Ver en Instagram</span>
               </a>
             </div>
@@ -1955,13 +2019,16 @@
         <div class="reel-frame">
           <div class="reel-border">
             <div class="reel-tag">Oficinas</div>
-            <div class="reel-inner">
-              <a class="reel-placeholder" href="https://www.instagram.com/p/DJFDtpMRi3b/" target="_blank">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
+            <div class="reel-inner" data-igurl="https://www.instagram.com/p/DJFDtpMRi3b/">
+              <div class="reel-skeleton"></div>
+              <img class="reel-thumb" src="" alt="Procure Las Condes" style="display:none">
+              <a class="reel-overlay" href="https://www.instagram.com/p/DJFDtpMRi3b/" target="_blank">
+                <div class="reel-play-btn">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </a>
+              <a class="reel-error" href="https://www.instagram.com/p/DJFDtpMRi3b/" target="_blank">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 <span>Ver en Instagram</span>
               </a>
             </div>
@@ -2003,13 +2070,16 @@
         <div class="reel-frame">
           <div class="reel-border">
             <div class="reel-tag">Institucional</div>
-            <div class="reel-inner">
-              <a class="reel-placeholder" href="https://www.instagram.com/p/DQIKHx5Dj_I/" target="_blank">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
+            <div class="reel-inner" data-igurl="https://www.instagram.com/p/DQIKHx5Dj_I/">
+              <div class="reel-skeleton"></div>
+              <img class="reel-thumb" src="" alt="Colegio Huelen" style="display:none">
+              <a class="reel-overlay" href="https://www.instagram.com/p/DQIKHx5Dj_I/" target="_blank">
+                <div class="reel-play-btn">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </a>
+              <a class="reel-error" href="https://www.instagram.com/p/DQIKHx5Dj_I/" target="_blank">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 <span>Ver en Instagram</span>
               </a>
             </div>
@@ -2051,13 +2121,16 @@
         <div class="reel-frame">
           <div class="reel-border">
             <div class="reel-tag">Remodelación</div>
-            <div class="reel-inner">
-              <a class="reel-placeholder" href="https://www.instagram.com/p/DFP7FgoxTft/?img_index=5" target="_blank">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
+            <div class="reel-inner" data-igurl="https://www.instagram.com/p/DFP7FgoxTft/?img_index=5">
+              <div class="reel-skeleton"></div>
+              <img class="reel-thumb" src="" alt="Casa Los Trapenses" style="display:none">
+              <a class="reel-overlay" href="https://www.instagram.com/p/DFP7FgoxTft/?img_index=5" target="_blank">
+                <div class="reel-play-btn">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </a>
+              <a class="reel-error" href="https://www.instagram.com/p/DFP7FgoxTft/?img_index=5" target="_blank">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 <span>Ver en Instagram</span>
               </a>
             </div>
@@ -2099,13 +2172,16 @@
         <div class="reel-frame">
           <div class="reel-border">
             <div class="reel-tag">Segunda Vivienda</div>
-            <div class="reel-inner">
-              <a class="reel-placeholder" href="https://www.instagram.com/p/CKkSblVnvcQ/?img_index=3" target="_blank">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
+            <div class="reel-inner" data-igurl="https://www.instagram.com/p/CKkSblVnvcQ/?img_index=3">
+              <div class="reel-skeleton"></div>
+              <img class="reel-thumb" src="" alt="Casa Pichilemu" style="display:none">
+              <a class="reel-overlay" href="https://www.instagram.com/p/CKkSblVnvcQ/?img_index=3" target="_blank">
+                <div class="reel-play-btn">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </a>
+              <a class="reel-error" href="https://www.instagram.com/p/CKkSblVnvcQ/?img_index=3" target="_blank">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 <span>Ver en Instagram</span>
               </a>
             </div>
@@ -2391,7 +2467,52 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('.hero-stats').forEach(el => statsObserver.observe(el));
 
-  // ── NAV SCROLL OPACITY ──
+  // ── INSTAGRAM oEMBED THUMBNAILS ──
+  // Uses Instagram's public oEmbed API to fetch real post thumbnails
+  async function loadReelThumbnails() {
+    const reelInners = document.querySelectorAll('.reel-inner[data-igurl]');
+
+    for (const inner of reelInners) {
+      const igUrl = inner.dataset.igurl;
+      const thumb = inner.querySelector('.reel-thumb');
+      const skeleton = inner.querySelector('.reel-skeleton');
+      const errorEl = inner.querySelector('.reel-error');
+
+      try {
+        // Use Instagram oEmbed endpoint (no auth needed for public posts)
+        const oembedUrl = `https://graph.facebook.com/v18.0/instagram_oembed?url=${encodeURIComponent(igUrl)}&maxwidth=640&fields=thumbnail_url,title&access_token=`;
+        
+        // Fallback: use a CORS proxy with the public oembed endpoint
+        const publicUrl = `https://api.instagram.com/oembed/?url=${encodeURIComponent(igUrl)}&maxwidth=640`;
+        
+        const res = await fetch(publicUrl);
+        if (!res.ok) throw new Error('oEmbed failed');
+        const data = await res.json();
+
+        if (data.thumbnail_url) {
+          thumb.src = data.thumbnail_url;
+          thumb.style.display = 'block';
+          thumb.onload = () => {
+            skeleton.style.display = 'none';
+          };
+          thumb.onerror = () => {
+            skeleton.style.display = 'none';
+            errorEl.classList.add('show');
+          };
+        } else {
+          throw new Error('No thumbnail');
+        }
+      } catch (e) {
+        // Show elegant error/CTA state
+        skeleton.style.display = 'none';
+        errorEl.classList.add('show');
+      }
+    }
+  }
+
+  loadReelThumbnails();
+
+
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 60) {
